@@ -1,0 +1,33 @@
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #631A86;
+    transition: all 0.2s;
+}
+#main{
+    font-family: 'Oxygen', 'sans-serif';
+}
+.nav-link.active{
+    font-weight: bold; 
+}
+a{
+    color: #000000;
+}
+a:hover{
+  font-weight: 600; 
+  color : #000000;
+}
+.fullrow{
+    min-height: 100%;
+}
+#v-pills-tab{
+    align-self: center;
+}
+.btn-spovent{
+    background-color: rgb(90, 21, 122);
+    color: white;
+    font-weight: 400;
+    font-size: 78%;
+}
+.btn-spovent:hover{
+    background-color: rgb(53, 11, 73);
+    color: white;
+}
