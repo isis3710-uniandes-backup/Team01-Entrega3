@@ -1,9 +1,10 @@
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-    background-color: #631A86;
+    background-color: #FF0054;
     transition: all 0.2s;
 }
 #main{
     font-family: 'Oxygen', 'sans-serif';
+    min-height: 100vh;
 }
 .nav-link.active{
     font-weight: bold; 
@@ -16,18 +17,34 @@ a:hover{
   color : #000000;
 }
 .fullrow{
-    min-height: 100%;
+    margin: 0.1em;
+    padding: 0.5em;
+}
+#main{
+    background-color: #f7f7f7;
+
 }
 #v-pills-tab{
     align-self: center;
 }
 .btn-spovent{
-    background-color: rgb(90, 21, 122);
-    color: white;
+    background-color: #6369D1;
+    color: #F4FAFF;
     font-weight: 400;
     font-size: 78%;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.6em;
 }
 .btn-spovent:hover{
-    background-color: rgb(53, 11, 73);
-    color: white;
+    background-color: #2B303A;
+    color: #F4FAFF;
+}
+.cardsutil{
+    background-color: white;
+    word-wrap: break-word;
+    border: 0.3px solid rgba(0,0,0,.125);
+    border-radius: .40rem;
+    padding: 0.9em;
+    min-height: 90vh;
 }
