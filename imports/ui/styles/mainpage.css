@@ -34,7 +34,7 @@ a:hover{
     font-size: 78%;
     display: inline-block;
     width: 100%;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.9em;
 }
 .btn-spovent:hover{
     background-color: #2B303A;
@@ -46,5 +46,13 @@ a:hover{
     border: 0.3px solid rgba(0,0,0,.125);
     border-radius: .40rem;
     padding: 0.9em;
+    min-height: 90vh;
+}
+.contenidoPrincipal{
+    background-color: white;
+    word-wrap: break-word;
+    border: 0.3px solid rgba(0,0,0,.125);
+    border-radius: .40rem;
+    padding: 2em;
     min-height: 90vh;
 }
