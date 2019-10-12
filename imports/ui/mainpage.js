@@ -1,20 +1,65 @@
 import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
+import CreateEvent from './createEvent';
+import EventosList from './eventosList';
 
 
 export default class mainpage extends Component {
     state = {
-        allEvents: [],
+        allEvents: [{
+            nombre: "Picadito",
+            lugar: "La caneca",
+            fecha: "01/10/2019 10:00",
+            deporte: "futbol",
+            cantidad: 5
+        }, {
+            nombre: "Picadito",
+            lugar: "La caneca",
+            fecha: "01/10/2019 10:00",
+            deporte: "futbol",
+            cantidad: 5
+        },
+        {
+            nombre: "Picadito",
+            lugar: "La caneca",
+            fecha: "01/10/2019 10:00",
+            deporte: "futbol",
+            cantidad: 5
+        },
+        {
+            nombre: "Picadito",
+            lugar: "La caneca",
+            fecha: "01/10/2019 10:00",
+            deporte: "futbol",
+            cantidad: 5
+        },
+        {
+            nombre: "Picadito",
+            lugar: "La caneca",
+            fecha: "01/10/2019 10:00",
+            deporte: "futbol",
+            cantidad: 5
+        }],
         confirmEvents: [],
         createdEvents: [],
         canceledEvents: []
+    }
+    join =() =>{
+        console.log('Me uni');
+    }
+    create = () => {
+        console.log('Me cree');
     }
     render() {
         return (
             <div id="main" className="container-fluid">
                 <div className="row fullrow">
                     <div className="col-3 align-items-center cardsutil">
-                        <button className="btn btn-spovent" type="submit">Crear un nuevo evento</button>
+                        <button type="button" className="btn btn-spovent" data-toggle="modal" data-target="#exampleModal">
+                            Crear un nuevo evento</button>
+                        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <CreateEvent createFunction={this.create}/>
+                        </div>
                         <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a className="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">Todos</a>
                             <a className="nav-link" id="v-pills-willAssist-tab" data-toggle="pill" href="#v-pills-willAssist" role="tab" aria-controls="v-pills-willAssist" aria-selected="false">Asistiré</a>
@@ -26,19 +71,19 @@ export default class mainpage extends Component {
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                                 Eventos
-                            {this.state.allEvents.map((e, i) => <H />)}
+                             <EventosList eventos={this.state.allEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
-                                Eventos <i class="fa fa-angle-right"></i> Asistiré
-                            {this.state.confirmEvents.map((e, i) => <H />)}
+                                Eventos <i className="fa fa-angle-right"></i> Asistiré
+                            <EventosList eventos={this.state.confirmEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
-                            Eventos <i class="fa fa-angle-right"></i> Cree
-                            {this.state.createdEvents.map((e, i) => <H />)}
+                                Eventos <i className="fa fa-angle-right"></i> Cree
+                                <EventosList eventos={this.state.createdEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
-                            Eventos <i class="fa fa-angle-right"></i> Cancelados
-                            {this.state.canceledEvents.map((e, i) => <H />)}
+                                Eventos <i className="fa fa-angle-right"></i> Cancelados
+                                <EventosList eventos={this.state.canceledEvents} joinFunction={this.join} />
                             </div>
                         </div>
                     </div>
