@@ -1,0 +1,53 @@
+div{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+nav{
+    background-color: #f7f7f7;
+}
+
+Button{
+    background-color: #2b303a;
+    margin:5px; 
+}
+form{
+    margin-left: 20px;
+}   
+.navbar-brand{
+    font-weight: bolder;
+}
+
+.navbar{
+    border-bottom: 2px inset #6369d1;
+}
+
+.nav-link{
+    color : #fdfffc !important;
+}
+
+.btnImagen{
+    border: none;
+}
+
+.btnImagen:focus {
+    box-shadow: none;
+}
+
+.dropdown:hover {
+    display: block;
+}
+
+#logo{    
+    margin: 5px;
+}
+
+#search{
+
+    text-align:center;
+}
+
+#searchButton{
+    margin : 0.8rem;
+}
+
+

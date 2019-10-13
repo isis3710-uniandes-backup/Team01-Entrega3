@@ -1,9 +1,9 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
-import MainPage from  '../imports/ui/mainpage';
+import Spovent from  '../imports/ui/spovent';
 
 Meteor.startup(() => {
-    render (<MainPage/>,document.getElementById("root"));
+    render (<Spovent/>,document.getElementById("root"));
 });
 
