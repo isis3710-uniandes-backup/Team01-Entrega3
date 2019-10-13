@@ -11,18 +11,22 @@ export default class mainpage extends Component {
         createdEvents: [],
         canceledEvents: []
     }
-    join =(evento) =>{
+    join = (evento) => {
+        let confirmados = this.state.confirmEvents;
+        confirmados.push(evento);
         this.setState({
-            confirmEvents: [...this.state.confirmEvents, evento]
-          });
+            confirmEvents: confirmados
+        });
     }
     create = (evento) => {
-        console.log(evento);
+        let todos = this.state.allEvents;
+        todos.push(evento);
+        let creados = this.state.createdEvents;
+        creados.push(evento);
         this.setState({
-            allEvents: [...this.state.allEvents, evento],
-            createdEvents: [...this.state.createdEvents, evento]
-          });
-        
+            allEvents: todos,
+            createdEvents: creados
+        });
     }
     render() {
         return (
@@ -32,7 +36,7 @@ export default class mainpage extends Component {
                         <button type="button" className="btn btn-spovent" data-toggle="modal" data-target="#exampleModal">
                             Crear un nuevo evento</button>
                         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <CreateEvent createFunction={this.create}/>
+                            <CreateEvent createFunction={this.create} />
                         </div>
                         <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a className="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">Todos</a>
