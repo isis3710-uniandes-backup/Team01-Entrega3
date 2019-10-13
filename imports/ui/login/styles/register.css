@@ -1,0 +1,13 @@
+.img-logo-register{
+    position: relative;
+    margin-left: -54.5%;
+    margin-top: 335%;
+}
+.img-logo-register img{
+    position: absolute;
+    width: 70%;
+    background: #282726;
+    border-radius: 4.5rem;
+    padding: 5%;
+}
+
