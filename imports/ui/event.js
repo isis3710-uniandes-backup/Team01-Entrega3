@@ -11,7 +11,18 @@ export default class event extends Component {
             cantidadPersonas: this.props.event.cantidad,
             joinFunction: this.props.joinFunction
         }
+        this.join=this.join.bind(this);  
     }
+    create(){
+        let ev={
+          nombre:this.state.nombre,
+          lugar:this.state.lugar,
+          fecha:this.state.fecha,
+          deporte:this.state.deporte,
+          cantidadPersonas:this.state.cantidadPersonas
+        };
+        this.state.joinFunction(ev);
+      }
     render() {
         return (
             <div className="col-md-4">
@@ -23,7 +34,7 @@ export default class event extends Component {
                                     <strong>{this.state.nombre}</strong>
                                 </div>
                                 <div className="col-4 text-center">
-                                    {<a href="#" onClick={this.state.joinFunction}>
+                                    {<a href="#" onClick={this.join}>
                                     <img src="https://image.flaticon.com/icons/svg/189/189689.svg" alt="Boton Unirme" height="50" width="50"/> 
                                         <p>Unirme</p>
                                     </a>

@@ -11,7 +11,7 @@ export default class mainpage extends Component {
         createdEvents: [],
         canceledEvents: []
     }
-    join =() =>{
+    join =(evento) =>{
         this.setState({
             confirmEvents: [...this.state.confirmEvents, evento]
           });
