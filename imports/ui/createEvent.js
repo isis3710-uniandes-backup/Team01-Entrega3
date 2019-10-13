@@ -9,18 +9,20 @@ export default class CreateEvent extends React.Component {
       fecha: "",
       deporte: "",
       cantidadPersonas: "",
+      descripcion:"",
       createFunction: this.props.createFunction
     }
     this.changeValue = this.changeValue.bind(this);
     this.create=this.create.bind(this);
   }
   create(){
-    let ev={
-      nombre:this.state.nombre,
-      lugar:this.state.lugar,
-      fecha:this.state.fecha,
-      deporte:this.state.deporte,
-      cantidadPersonas:this.state.cantidadPersonas
+    const ev={
+      name:this.state.nombre,
+      address:this.state.lugar,
+      date:this.state.fecha,
+      sport:this.state.deporte,
+      detail:this.state.descripcion,
+      people:this.state.cantidadPersonas
     };
     this.state.createFunction(ev);
   }
@@ -41,7 +43,11 @@ export default class CreateEvent extends React.Component {
       this.setState({
         fecha: e.target.value
       });
-    } else{
+    } else if (e.target.id === "descripcion") {
+      this.setState({
+        descripcion: e.target.value
+      });
+    }else{
       this.setState({
         cantidadPersonas: e.target.value
       });
@@ -62,8 +68,12 @@ export default class CreateEvent extends React.Component {
           </div>
           <div className="modal-body">
             <div className="form-group mb-3">
-              <label>Nombre Completo:</label>
-              <input id="nombre" type="text" className="form-control" aria-label="nombre" placeholder="ej: Juan Sarmiento" varia-describedby="basic-addon1" value={this.state.nombre} onChange={this.changeValue}></input>
+              <label>Nombre:</label>
+              <input id="nombre" type="text" className="form-control" aria-label="nombre" placeholder="ej: Picadito fut5" varia-describedby="basic-addon1" value={this.state.nombre} onChange={this.changeValue}></input>
+            </div>
+            <div className="form-group mb-3">
+              <label>Info adicional:</label>
+              <textarea id="descripcion" type="text" className="form-control" aria-label="nombre" placeholder="ej: apostando cancha" varia-describedby="basic-addon1" value={this.state.descripcion} onChange={this.changeValue}></textarea>
             </div>
             <div className="form-group-group mb-3">
               <label>Lugar:</label>

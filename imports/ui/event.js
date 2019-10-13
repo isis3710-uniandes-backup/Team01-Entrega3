@@ -4,22 +4,24 @@ export default class event extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nombre: this.props.event.nombre,
-            lugar: this.props.event.lugar,
-            fecha: this.props.event.fecha,
-            deporte: this.props.event.deporte,
-            cantidadPersonas: this.props.event.cantidad,
+            nombre: this.props.event.name,
+            lugar: this.props.event.address,
+            fecha: this.props.event.date,
+            descripcion: this.props.event.description,
+            deporte: this.props.event.sport,
+            cantidadPersonas: this.props.event.people,
             joinFunction: this.props.joinFunction
         }
         this.join=this.join.bind(this);  
     }
-    create(){
-        let ev={
-          nombre:this.state.nombre,
-          lugar:this.state.lugar,
-          fecha:this.state.fecha,
-          deporte:this.state.deporte,
-          cantidadPersonas:this.state.cantidadPersonas
+    join(){
+        const ev={
+          name:this.state.nombre,
+          address:this.state.lugar,
+          date:this.state.fecha,
+          sport:this.state.deporte,
+          detail:this.state.descripcion,
+          people:this.state.cantidadPersonas
         };
         this.state.joinFunction(ev);
       }
@@ -42,6 +44,7 @@ export default class event extends Component {
                                 </div>
                             </div>
                         </div>
+                        <h5 className="card-text">{this.state.description}</h5>
                         <h5 className="card-text">{this.state.lugar}</h5>
                         <h5 className="card-text">{this.state.fecha}</h5>
                         <h5 className="card-text">{this.state.deporte}</h5>
