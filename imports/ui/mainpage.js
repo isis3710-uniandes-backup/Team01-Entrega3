@@ -6,49 +6,23 @@ import EventosList from './eventosList';
 
 export default class mainpage extends Component {
     state = {
-        allEvents: [{
-            nombre: "Picadito",
-            lugar: "La caneca",
-            fecha: "01/10/2019 10:00",
-            deporte: "futbol",
-            cantidad: 5
-        }, {
-            nombre: "Picadito",
-            lugar: "La caneca",
-            fecha: "01/10/2019 10:00",
-            deporte: "futbol",
-            cantidad: 5
-        },
-        {
-            nombre: "Picadito",
-            lugar: "La caneca",
-            fecha: "01/10/2019 10:00",
-            deporte: "futbol",
-            cantidad: 5
-        },
-        {
-            nombre: "Picadito",
-            lugar: "La caneca",
-            fecha: "01/10/2019 10:00",
-            deporte: "futbol",
-            cantidad: 5
-        },
-        {
-            nombre: "Picadito",
-            lugar: "La caneca",
-            fecha: "01/10/2019 10:00",
-            deporte: "futbol",
-            cantidad: 5
-        }],
+        allEvents: [],
         confirmEvents: [],
         createdEvents: [],
         canceledEvents: []
     }
     join =() =>{
-        console.log('Me uni');
+        this.setState({
+            confirmEvents: [...this.state.confirmEvents, evento]
+          });
     }
-    create = () => {
-        console.log('Me cree');
+    create = (evento) => {
+        console.log(evento);
+        this.setState({
+            allEvents: [...this.state.allEvents, evento],
+            createdEvents: [...this.state.createdEvents, evento]
+          });
+        
     }
     render() {
         return (

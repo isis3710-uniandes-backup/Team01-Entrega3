@@ -12,6 +12,17 @@ export default class CreateEvent extends React.Component {
       createFunction: this.props.createFunction
     }
     this.changeValue = this.changeValue.bind(this);
+    this.create=this.create.bind(this);
+  }
+  create(){
+    let ev={
+      nombre:this.state.nombre,
+      lugar:this.state.lugar,
+      fecha:this.state.fecha,
+      deporte:this.state.deporte,
+      cantidadPersonas:this.state.cantidadPersonas
+    };
+    this.state.createFunction(ev);
   }
   changeValue(e) {
     if (e.target.id === "lugar") {
@@ -74,7 +85,7 @@ export default class CreateEvent extends React.Component {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={this.state.createFunction} data-dismiss="modal">Crear</button>
+              <button type="button" className="btn btn-primary" onClick={this.create} data-dismiss="modal">Crear</button>
             </div>
           </div>
         </div>
