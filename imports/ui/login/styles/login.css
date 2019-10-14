@@ -11,10 +11,13 @@
     text-align: center;
     margin-bottom:12%;
     color:#f4faff;
+    font-family: 'Cairo', serif;
+    font-size: 2.2rem;
 }
 
 .form-control{
     background-color: #f4faff;
+    font-family: 'Archivo', sans-serif;
 }
 
 .logo{
@@ -34,6 +37,7 @@
     border: none;
     border-radius: 1.5rem;
     padding:2%;
+    font-family: 'Archivo', sans-serif;
 }
 
 .btnSubmit:hover{
@@ -46,6 +50,7 @@
     font-weight: 600;
     text-decoration: none;
     font-size: 0.8rem;
+    font-family: 'Archivo', sans-serif;
 }
 .btnForgetPwd:hover{
     text-decoration:none;

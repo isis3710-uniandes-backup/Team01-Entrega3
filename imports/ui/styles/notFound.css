@@ -37,8 +37,8 @@ body {
 }
 
 .notfound .notfound-404 h1 {
-    font-family: 'Hepta Slab', serif;
-    font-size: 5rem;
+    font-family: 'Cairo', serif;
+    font-size: 166px;
     font-weight: 900;
     margin: 0px;
     text-transform: uppercase;
@@ -49,7 +49,7 @@ body {
 }
 
 .notfound h2 {
-    font-family: 'Hepta Slab', serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 26px;
     font-weight: 700;
     margin: 0;
@@ -57,7 +57,7 @@ body {
 }
 
 .notfound p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 0px;
@@ -65,7 +65,7 @@ body {
 }
 
 .notfound a {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     display: inline-block;
     text-transform: uppercase;
     color: #f4faff;

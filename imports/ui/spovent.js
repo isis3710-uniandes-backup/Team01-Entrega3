@@ -48,7 +48,7 @@ export default class spovent extends Component {
                     <div>
                         <Navbar logOutFunc={this.logOut} logueado={this.state.logueado}/>
                         <Switch>
-                            <Route exact path="/" component={MainPage}/>
+                            <Route exact path="/main" component={MainPage}/>
                             <Route exact path="/login">
                                 <Login logueado={this.state.logueado} logFunc={this.loguear}/>
                             </Route>
