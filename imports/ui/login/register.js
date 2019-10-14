@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles/register.css'
 import {Users} from "../../api/mongoSettings";
+import { Redirect } from 'react-router';
 //import { Users } from '../../api/mongoSettings';
 
 export default class register extends Component{
@@ -11,7 +12,9 @@ export default class register extends Component{
             name: "",
             lastName: "",
             email: "",
-            password: ""
+            password: "",
+            logFunc: this.props.logFunc,
+            logueado: this.props.logueado
             };
         this.changeValue = this.changeValue.bind(this);
         this.signUp = this.signUp.bind(this);
@@ -45,12 +48,26 @@ export default class register extends Component{
     }
 
     signUp(){
-        Users.insert({username: this.state.username, name: this.state.name, lastName: this.state.lastName, email: this.state.email, password: this.state.password})
+        let user = {
+            username: this.state.username,
+            name: this.state.name,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password
+        };
+        let id = Users.insert(user);
+        user._id=id;
+        this.setState({logueado: true})
+        this.state.logFunc(user)
     }
 
     render() {
+        if (this.state.logueado) {
+            return <Redirect push to="/" />;
+        }
         return (
             <div className="container login-container">
+                {console.log("En register: " + this.state.logueado + "   " + this.props.logueado)}
                 <div className="row" id="login">
                     <div className="col-md-6 offset-md-3 login-form">
                         <h3>Register</h3>

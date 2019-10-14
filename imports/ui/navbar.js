@@ -11,26 +11,26 @@ export default class Navbar extends Component {
         this.state = {
             busqueda: "",
             usuario: "",
-            logueado: false,
-            logFunc: this.props.logFunc
+            logueado: this.props.logueado,
+            logOutFunc: this.props.logOutFunc
         }
         this.changeValue = this.changeValue.bind(this);
-        this.loguear = this.loguear.bind(this);
         this.cerrarSesion = this.cerrarSesion.bind(this);
     }
-    loguear(user) {
-        this.setState({
-            usuario: user,
-            logueado: true
-        });
-        this.state.logFunc(user);
+
+    componentDidUpdate(prevProps) {
+        if (this.props.logueado !== prevProps.logueado) {
+            this.setState({
+                logueado: this.props.logueado
+            });
+        }
     }
     cerrarSesion() {
         this.setState({
             usuario: "",
             logueado: false
         });
-        this.state.logFunc("");
+        this.state.logOutFunc();
     }
     changeValue(e) {
         this.setState({
@@ -60,26 +60,27 @@ export default class Navbar extends Component {
                                     </button>
                                     <div className="dropdown-menu">
                                         <a className="dropdown-item" href="#">Ajustes de cuenta</a>
-                                        <a className="dropdown-item" href="#">Cerrar Sesión</a>
+                                        <a className="dropdown-item" href="#" onClick={this.cerrarSesion}>Cerrar Sesión</a>
                                     </div>
                                 </div>
                             </li>
                         </ul> : <ul className="nav navbar-nav ml-auto">
                                 <div className="btn-group dropleft">
                                     <li className="nav-item ">
-                                        <button id="butlogin" type="button" className="btn btn-dark">
-                                            Inicia sesión </button>
+                                        <Link to="/login" >
+                                            <button id="butlogin" type="button" className="btn btn-dark"> Inicia sesión </button>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <button id="butReg" type="button" className="btn btn-dark">
-                                            Regístrate </button>
+                                        <Link to="/register">
+                                            <button id="butReg" type="button" className="btn btn-dark">Regístrate </button>
+                                        </Link>
                                     </li>
                                 </div>
                                 </ul>
                         }
                     </div>
                 </nav>
-            
         )
     }
 }
