@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
-
+import {Users, Events} from "../../api/mongoSettings";
 
 export default class mainpage extends Component {
     state = {
@@ -18,6 +18,7 @@ export default class mainpage extends Component {
         this.setState({
             confirmEvents: confirmados
         });
+        
     }
     create = (evento) => {
         let todos = this.state.allEvents;
@@ -28,13 +29,19 @@ export default class mainpage extends Component {
             allEvents: todos,
             createdEvents: creados
         });
+        Events.insert(evento);
+
     }
 
-    s
-
+    componentDidMount(){
+       this.setState({
+           allEvents : Events.find({}),
+           confirmEvents : userlogged.suscribedEvents,
+           createdEvents :  userlogged.eventsOffered
+       }); 
+    }
 
     render() {
-        console.log(this.state)
         return (
             <div id="main" className="container-fluid">
                 <div className="row fullrow">
