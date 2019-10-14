@@ -3,4 +3,5 @@
 ```
 * Instalar material-ui
 * Instalar date-io
+* Instalar sweetalert2
 ```
