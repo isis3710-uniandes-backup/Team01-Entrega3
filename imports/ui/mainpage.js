@@ -7,10 +7,11 @@ import { Events } from '../api/mongoSettings';
 
 export default class mainpage extends Component {
     state = {
+        userlogged: (this.props.location.state !== undefined) ? this.props.location.state.user : -1,
         allEvents: [],
         confirmEvents: [],
         createdEvents: [],
-        canceledEvents: []
+        filteredEvents: this.props.location.state.filteredEvents !== undefined ? this.props.location.state.filteredEvents : []
     }
     join = (evento) => {
         let confirmados = this.state.confirmEvents;
@@ -32,7 +33,12 @@ export default class mainpage extends Component {
         Events.insert(evento);
 
     }
+
+    s
+
+
     render() {
+        console.log(this.state)
         return (
             <div id="main" className="container-fluid">
                 <div className="row fullrow">
@@ -64,8 +70,8 @@ export default class mainpage extends Component {
                                 <EventosList eventos={this.state.createdEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
-                                Eventos <i className="fa fa-angle-right"></i> Cancelados
-                                <EventosList eventos={this.state.canceledEvents} joinFunction={this.join} />
+                                Eventos <i className="fa fa-angle-right"></i> Buscados
+                                <EventosList eventos={this.state.filteredEvents} joinFunction={this.join} />
                             </div>
                         </div>
                     </div>
