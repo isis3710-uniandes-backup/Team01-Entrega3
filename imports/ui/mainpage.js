@@ -18,6 +18,7 @@ export default class mainpage extends Component {
         this.setState({
             confirmEvents: confirmados
         });
+        
     }
     create = (evento) => {
         let todos = this.state.allEvents;
@@ -28,6 +29,8 @@ export default class mainpage extends Component {
             allEvents: todos,
             createdEvents: creados
         });
+        Events.insert(evento);
+
     }
 
     componentDidMount(){

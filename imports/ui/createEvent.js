@@ -1,4 +1,11 @@
 import React from 'react';
+import DateFnsUtils from '@date-io/date-fns';
+import Grid from '@material-ui/core/Grid';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDateTimePicker,
+} from '@material-ui/pickers';
+import TextField from '@material-ui/core/TextField';
 
 export default class CreateEvent extends React.Component {
   constructor(props) {
@@ -6,26 +13,32 @@ export default class CreateEvent extends React.Component {
     this.state = {
       nombre: "",
       lugar: "",
-      fecha: "",
+      fecha: new Date(),
       deporte: "",
       cantidadPersonas: "",
-      descripcion:"",
+      descripcion: "",
       createFunction: this.props.createFunction
     }
     this.changeValue = this.changeValue.bind(this);
-    this.create=this.create.bind(this);
+    this.create = this.create.bind(this);
   }
-  create(){
-    const ev={
-      name:this.state.nombre,
-      address:this.state.lugar,
-      date:this.state.fecha,
-      sport:this.state.deporte,
-      detail:this.state.descripcion,
-      people:this.state.cantidadPersonas
+  create() {
+    const ev = {
+      name: this.state.nombre,
+      address: this.state.lugar,
+      date: this.state.fecha,
+      sport: this.state.deporte,
+      detail: this.state.descripcion,
+      people: this.state.cantidadPersonas
     };
+    console.log(ev);
     this.state.createFunction(ev);
   }
+  setSelectedDate = date => {
+    this.setState({
+        fecha: date
+    })
+};
   changeValue(e) {
     if (e.target.id === "lugar") {
       this.setState({
@@ -47,7 +60,7 @@ export default class CreateEvent extends React.Component {
       this.setState({
         descripcion: e.target.value
       });
-    }else{
+    } else {
       this.setState({
         cantidadPersonas: e.target.value
       });
@@ -67,31 +80,70 @@ export default class CreateEvent extends React.Component {
             </button>
           </div>
           <div className="modal-body">
-            <div className="form-group mb-3">
-              <label>Nombre:</label>
-              <input id="nombre" type="text" className="form-control" aria-label="nombre" placeholder="ej: Picadito fut5" varia-describedby="basic-addon1" value={this.state.nombre} onChange={this.changeValue}></input>
-            </div>
-            <div className="form-group mb-3">
-              <label>Info adicional:</label>
-              <textarea id="descripcion" type="text" className="form-control" aria-label="nombre" placeholder="ej: apostando cancha" varia-describedby="basic-addon1" value={this.state.descripcion} onChange={this.changeValue}></textarea>
-            </div>
-            <div className="form-group-group mb-3">
-              <label>Lugar:</label>
-              <input id="lugar" type="text" className="form-control" aria-label="lugar" placeholder="ej: La caneca" varia-describedby="basic-addon1" value={this.state.lugar} onChange={this.changeValue}></input>
-            </div>
-            <div className="form-group mb-3">
-              <label>Fecha:</label>
-              <small className="form-text text-muted">dd/MM/aaaa</small>
-              <input id="fecha" type="text" className="form-control" aria-label="fecha" placeholder="ej: 01/10/2019" varia-describedby="basic-addon1" value={this.state.fecha} onChange={this.changeValue}></input>
-
-            </div>
-            <div className="form-group mb-3">
-              <label>Deporte:</label>
-              <input id="deporte" type="text" className="form-control" aria-label="deporte" placeholder="ej: Tenis" aria-describedby="basic-addon1" value={this.state.deporte} onChange={this.changeValue}></input>
-            </div>
-            <div className="form-group mb-3">
-              <label>Cantidad Personas:</label>
-              <input id="cantidad" type="number" className="form-control" aria-label="cantidad" placeholder="ej: 5" aria-describedby="basic-addon1" value={this.state.cantidadPersonas} onChange={this.changeValue}></input>
+            <div className="row">
+              <div className="col-md-6">
+                <TextField
+                  required
+                  id="nombre"
+                  label="Nombre"
+                  defaultValue={this.state.nombre}
+                  onChange={this.changeValue}
+                  margin="normal"
+                />
+                <TextField
+                  required
+                  id="descripcion"
+                  label="Info adicional"
+                  defaultValue={this.state.descripcion}
+                  onChange={this.changeValue}
+                  margin="normal"
+                />
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <Grid container justify="space-around">
+                    <KeyboardDateTimePicker
+                      margin="normal"
+                      id="date-picker-dialog"
+                      label="Fecha"
+                      disablePast="true"
+                      format="MM/dd/yyyy HH:mm"
+                      value={this.state.fecha}
+                      onChange={this.setSelectedDate}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                      }}
+                    />
+                  </Grid>
+                </MuiPickersUtilsProvider>
+              </div>
+              <div className="col-md-6">
+                <TextField
+                  required
+                  id="lugar"
+                  label="Ubicacion"
+                  defaultValue={this.state.lugar}
+                  onChange={this.changeValue}
+                  margin="normal"
+                />
+                <TextField
+                  required
+                  id="deporte"
+                  label="Deporte"
+                  defaultValue={this.state.deporte}
+                  onChange={this.changeValue}
+                  margin="normal"
+                />
+                <TextField
+                  required
+                  id="cantidad"
+                  label="Cantidad de Personas"
+                  defaultValue={this.state.cantidadPersonas}
+                  onChange={this.changeValue}
+                  margin="normal"
+                  type="number"
+                  min="0"
+                  step="1"
+                />
+              </div>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Cerrar</button>

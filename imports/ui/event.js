@@ -6,8 +6,13 @@ export default class event extends Component {
         this.state = {
             nombre: this.props.event.name,
             lugar: this.props.event.address,
-            fecha: this.props.event.date,
-            descripcion: this.props.event.description,
+            fecha: [this.props.event.date.getMonth()+1,
+                this.props.event.date.getDate(),
+                this.props.event.date.getFullYear()].join('/')+' '+
+               [this.props.event.date.getHours(),
+                this.props.event.date.getMinutes(),
+                this.props.event.date.getSeconds()].join(':'),
+            descripcion: this.props.event.detail,
             deporte: this.props.event.sport,
             cantidadPersonas: this.props.event.people,
             joinFunction: this.props.joinFunction
@@ -46,7 +51,7 @@ export default class event extends Component {
                         </div>
                         <h5 className="card-text">{this.state.description}</h5>
                         <h5 className="card-text">{this.state.lugar}</h5>
-                        <h5 className="card-text">{this.state.fecha}</h5>
+                        <h5 className="card-text">{(this.state.fecha).toString()}</h5>
                         <h5 className="card-text">{this.state.deporte}</h5>
                         <h5 className="card-text">{this.state.cantidadPersonas} personas</h5>
                     </div>
