@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import '../ui/styles/navbar.css';
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
-//import logo from "../ui/assets/spovent.png";
-//import UserLogo from "../ui/assets/useroptions.png";
+import {Events} from "../api/mongoSettings";
+
+
 
 
 export default class Navbar extends Component {
@@ -11,6 +12,7 @@ export default class Navbar extends Component {
         super(props);
         this.state = {
             busqueda: "",
+            filtrados: [],
             usuario: "",
             logueado: this.props.logueado,
             logOutFunc: this.props.logOutFunc
@@ -44,6 +46,25 @@ export default class Navbar extends Component {
         });
     }
 
+    filtrar(){
+        let eventsByName = Events.find({name: this.state.busqueda});
+        let eventsBySport = Events.find({sport: this.state.busqueda});
+
+        if(eventsByName!=null){
+            this.setState(
+                {filtrados: eventsByName}
+            )
+        }
+        else if (eventsBySport!=null){
+            this.setState(
+                {filtrados: eventsBySport}
+            )
+        }
+        else{
+            console.log("No existen eventos")
+        }
+    }
+
     render() {
         return (
                 <nav className="navbar navbar-expand-lg navbar-light" value={this.state.usuario}>
@@ -55,8 +76,14 @@ export default class Navbar extends Component {
                         <form className="form-inline my-2 my-lg-0">
                             <input id="search" className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" value={this.state.busqueda} onChange={this.changeValue}></input>
                         </form>
-                        <button type="button" className="btn btn-dark">
-                        Buscar</button>
+                        {console.log("filtered events "+ this.state.filtrados)}
+                        {console.log("busqueda "+ this.state.busqueda)}
+                        <Link onClick={this.filtrar}  to={{
+                                pathname : '/',
+                                state : {
+                                    filteredEvents : this.state.filtrados
+                                }}} id="buscarButton" className="btn btn-dark" 
+                                type="submit" >Buscar</Link>
                         {this.state.logueado ? 
                         <ul className="nav navbar-nav ml-auto">
                             <li className="nav-item dropdown">
