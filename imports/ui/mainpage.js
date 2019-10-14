@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
-import {Users, Events} from "../../api/mongoSettings";
+import {Users, Events} from "../api/mongoSettings";
 
 export default class mainpage extends Component {
     state = {
