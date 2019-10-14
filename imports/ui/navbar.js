@@ -54,12 +54,11 @@ export default class Navbar extends Component {
                         {this.state.logueado ? 
                         <ul className="nav navbar-nav ml-auto">
                             <li className="nav-item dropdown">
-                                <div className="btn-group dropdown">
+                                <div className="btn-group dropleft">
                                     <button type="button" className="btn btnImagen dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img className="img-circle" src="https://image.flaticon.com/icons/svg/1301/1301464.svg" width="30" height="30"></img> 
                                     </button>
                                     <div className="dropdown-menu">
-                                        <a className="dropdown-item" href="#">Ajustes de cuenta</a>
                                         <a className="dropdown-item" href="#" onClick={this.cerrarSesion}>Cerrar Sesión</a>
                                     </div>
                                 </div>
