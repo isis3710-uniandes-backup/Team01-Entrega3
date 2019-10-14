@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/register.css'
 import {Users} from "../../api/mongoSettings";
 import { Redirect } from 'react-router';
+import Swal from "sweetalert2";
 //import { Users } from '../../api/mongoSettings';
 
 export default class register extends Component{
@@ -59,6 +60,12 @@ export default class register extends Component{
         user._id=id;
         this.setState({logueado: true})
         this.state.logFunc(user)
+        Swal.fire({
+            type: 'success',
+            title: 'Registro exitoso ' + user.username,
+            text: 'Disfruta nuestros servicios!',
+            timer: 3000
+        })
     }
 
     render() {
@@ -69,7 +76,7 @@ export default class register extends Component{
             <div className="container login-container">
                 {console.log("En register: " + this.state.logueado + "   " + this.props.logueado)}
                 <div className="row" id="login">
-                    <div className="col-md-6 offset-md-3 login-form">
+                    <div className="col-md-6 offset-md-3 register-form">
                         <h3>Registrarse</h3>
 
                         <form >
@@ -91,17 +98,10 @@ export default class register extends Component{
                             <div className="form-group">
                                 <input type="submit" className="btnSubmit" value="Sign up" onClick={this.signUp}/>
                             </div>
-                            <div className="form-group">
-                                <a href="#" className="btnForgetPwd">Forget Password?</a>
-                            </div>
                         </form>
 
                     </div>
-                    <div className="logo">
-                        <div className="img-logo-register">
-                            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                        </div>
-                    </div>
+                    <div className="logo" />
                 </div>
             </div>
         )

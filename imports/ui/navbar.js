@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../ui/styles/navbar.css';
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 //import logo from "../ui/assets/spovent.png";
 //import UserLogo from "../ui/assets/useroptions.png";
 
@@ -31,6 +32,11 @@ export default class Navbar extends Component {
             logueado: false
         });
         this.state.logOutFunc();
+        Swal.fire({
+            title: 'Adios!',
+            text: 'Tus eventos te estaran esperando!',
+            timer: 3000
+        })
     }
     changeValue(e) {
         this.setState({

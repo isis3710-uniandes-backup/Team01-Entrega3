@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/login.css';
 import {Users} from "../../api/mongoSettings";
 import { Redirect } from 'react-router';
+import Swal from 'sweetalert2';
 
 export default class login extends Component{
     constructor(props) {
@@ -37,6 +38,12 @@ export default class login extends Component{
                     logueado: true
                 });
                 this.state.logFunc(user)
+                Swal.fire({
+                    type: 'success',
+                    title: 'Bienvenido de nuevo ' + user.username,
+                    text: 'Diviertete en nuestra plataforma!',
+                    timer: 3000
+                })
             }
             else
                 console.log("Username or password incorrect");
@@ -71,11 +78,7 @@ export default class login extends Component{
                         </div>
 
                     </div>
-                    <div className="logo">
-                        <div className="img-logo">
-                            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                        </div>
-                    </div>
+                    <div className="logo" />
                 </div>
             </div>
         )
