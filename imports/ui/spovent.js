@@ -6,6 +6,7 @@ import Login from './login/login';
 import Register from './login/register';
 import NotFound from './notFound';
 import Home from './slogan';
+import Swal from "sweetalert2";
 
 export default class spovent extends Component {
     constructor(props) {
