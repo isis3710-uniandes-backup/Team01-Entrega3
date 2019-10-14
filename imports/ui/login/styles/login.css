@@ -10,13 +10,13 @@
 .img-logo img{
     position: absolute;
     width: 70%;
-    background: #282726;
+    background: #2b303a;
     border-radius: 4.5rem;
     padding: 5%;
 }
 .login-form{
     padding: 9%;
-    background:#282726;
+    background:#2b303a;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
 .login-form h3{
@@ -25,7 +25,7 @@
     color:#fff;
 }
 .logo{
-    background: #f05837;
+    background: #ff0054;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     padding-top: 7%;
     padding-left: 0;
@@ -36,7 +36,7 @@
 .btnSubmit{
     font-weight: 600;
     width: 50%;
-    color: #282726;
+    color: #2b303a;
     background-color: #fff;
     border: none;
     border-radius: 1.5rem;

@@ -70,7 +70,7 @@ export default class register extends Component{
                 {console.log("En register: " + this.state.logueado + "   " + this.props.logueado)}
                 <div className="row" id="login">
                     <div className="col-md-6 offset-md-3 login-form">
-                        <h3>Register</h3>
+                        <h3>Registrarse</h3>
 
                         <form >
                             <div className="form-group">

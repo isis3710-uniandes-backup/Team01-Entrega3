@@ -51,10 +51,9 @@ export default class login extends Component{
         }
         return (
             <div className="container login-container">
-                {console.log("En login: " + this.state.logueado + "   " + this.props.logueado)}
                 <div className="row">
                     <div className="col-md-6 offset-md-3 login-form">
-                        <h3>Login</h3>
+                        <h3>Ingresar</h3>
 
                         <div className="form-group">
                             <input id="username" type="text" className="form-control login-form-control" placeholder="Username " onChange={this.changeValue} required

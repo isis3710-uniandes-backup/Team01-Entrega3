@@ -41,7 +41,7 @@ export default class Navbar extends Component {
     render() {
         return (
                 <nav className="navbar navbar-expand-lg navbar-light" value={this.state.usuario}>
-                    <img className="img-circle" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/400/2319488400_9ae772ff-d97b-4ad7-b074-2b095a18337a.png?cb=1570928773" id="logo" alt="Logo" width="100" height="40"></img>
+                    <Link to="/"><img className="img-circle" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/400/2319488400_9ae772ff-d97b-4ad7-b074-2b095a18337a.png?cb=1570928773" id="logo" alt="Logo" width="100" height="40"></img></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
