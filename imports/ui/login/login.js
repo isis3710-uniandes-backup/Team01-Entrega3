@@ -112,13 +112,13 @@ export default class login extends Component{
                             </div>
                         }
                         <div className="form-group">
-                            <input type="button" className="btnSubmit" value="Login" onClick={this.validate}/>
+                            <input type="button" className="btnSubmit" value="Ingresar" onClick={this.validate}/>
                         </div>
                         <div className="form-group">
-                            <a href="#" className="btnForgetPwd">Forget Password?</a>
+                            <a href="/register" className="btnForgetPwd">No tienes cuenta? Registrate aquí</a>
                         </div>
                     </div>
-                    <div className="logo" />
+                    <div className="logo"/>
                 </div>
             </div>
         )

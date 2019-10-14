@@ -32,14 +32,13 @@ body {
 
 .notfound .notfound-404 {
     position: relative;
-    height: 150px;
+    height: 80%;
     line-height: 150px;
-    margin-bottom: 25px;
 }
 
 .notfound .notfound-404 h1 {
     font-family: 'Hepta Slab', serif;
-    font-size: 166px;
+    font-size: 5rem;
     font-weight: 900;
     margin: 0px;
     text-transform: uppercase;
@@ -69,10 +68,10 @@ body {
     font-family: 'Open Sans', sans-serif;
     display: inline-block;
     text-transform: uppercase;
-    color: #2b303a;
+    color: #f4faff;
     text-decoration: none;
     border: none;
-    background: #6369d1;
+    background: #2B303A;
     padding: 10px 40px;
     font-size: 14px;
     font-weight: 700;

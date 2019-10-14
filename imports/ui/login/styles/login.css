@@ -10,8 +10,13 @@
 .login-form h3{
     text-align: center;
     margin-bottom:12%;
-    color:#fff;
+    color:#f4faff;
 }
+
+.form-control{
+    background-color: #f4faff;
+}
+
 .logo{
     background: #ff0054;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
@@ -25,11 +30,17 @@
     font-weight: 600;
     width: 50%;
     color: #2b303a;
-    background-color: #fff;
+    background-color: #f4faff;
     border: none;
     border-radius: 1.5rem;
     padding:2%;
 }
+
+.btnSubmit:hover{
+    background-color: #ff0054   ;
+    color: #f4faff;
+}
+
 .btnForgetPwd{
     color: #fff;
     font-weight: 600;
@@ -38,7 +49,7 @@
 }
 .btnForgetPwd:hover{
     text-decoration:none;
-    color:#fff;
+    color:#ff0054 ;
 }
 
 #checkUsername-login{
