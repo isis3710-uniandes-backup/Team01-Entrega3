@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
+import { Events } from '../api/mongoSettings';
 
 
 export default class mainpage extends Component {
@@ -17,6 +18,7 @@ export default class mainpage extends Component {
         this.setState({
             confirmEvents: confirmados
         });
+        
     }
     create = (evento) => {
         let todos = this.state.allEvents;
@@ -27,6 +29,8 @@ export default class mainpage extends Component {
             allEvents: todos,
             createdEvents: creados
         });
+        Events.insert(evento);
+
     }
     render() {
         return (
