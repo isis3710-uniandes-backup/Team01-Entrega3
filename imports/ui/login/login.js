@@ -4,6 +4,9 @@ import {Users} from "../../api/mongoSettings";
 import { Redirect } from 'react-router';
 import Swal from 'sweetalert2';
 
+let checkUsername = true;
+let checkPassword = true;
+
 export default class login extends Component{
     constructor(props) {
         super(props);
@@ -15,6 +18,7 @@ export default class login extends Component{
         };
         this.changeValue = this.changeValue.bind(this);
         this.signIn = this.signIn.bind(this);
+        this.validate = this.validate.bind(this);
     }
 
     changeValue(e) {
@@ -27,6 +31,18 @@ export default class login extends Component{
                 password: e.target.value
             });
         }
+    }
+
+    validate(){
+        checkUsername = false;
+        checkPassword = false;
+        if(this.state.username != "")
+            checkUsername = true;
+        if(this.state.password != "")
+            checkPassword = true;
+        if(checkUsername && checkPassword)
+            this.signIn();
+        this.forceUpdate ()
     }
 
     signIn(){
@@ -43,13 +59,23 @@ export default class login extends Component{
                     title: 'Bienvenido de nuevo ' + user.username,
                     text: 'Diviertete en nuestra plataforma!',
                     timer: 3000
-                })
+                });
             }
             else
-                console.log("Username or password incorrect");
+                Swal.fire({
+                    type: 'error',
+                    title: 'Usuario o Contraseña incorrecta',
+                    text: 'Vuelve a intentarlo',
+                    timer: 1500
+                });
         }
         else
-            console.log("Username or password incorrect");
+            Swal.fire({
+                type: 'error',
+                title: 'Usuario o Contraseña incorrecta',
+                text: 'Vuelve a intentarlo',
+                timer: 2000
+            });
     }
 
     render() {
@@ -61,22 +87,36 @@ export default class login extends Component{
                 <div className="row">
                     <div className="col-md-6 offset-md-3 login-form">
                         <h3>Ingresar</h3>
-
+                        {checkUsername ?
+                            <div className="form-group">
+                                <input id="username" type="text" className="form-control login-form-control" placeholder="Nombre de Usuario "
+                                       onChange={this.changeValue}/>
+                            </div>
+                            :
+                            <div className="form-group">
+                                <input id="username" type="text" className="form-control login-form-control" placeholder="Nombre de Usuario "
+                                       onChange={this.changeValue}/>
+                                <p id="checkUsername-login">*Rellena este campo</p>
+                            </div>
+                        }
+                        {checkPassword ?
+                            <div className="form-group">
+                                <input id="password" type="password" className="form-control login-form-control" placeholder="Contraseña "
+                                       onChange={this.changeValue}/>
+                            </div>
+                            :
+                            <div className="form-group">
+                                <input id="password" type="password" className="form-control login-form-control" placeholder="Contraseña "
+                                       onChange={this.changeValue}/>
+                                <p id="checkPassword-login">*Rellena este campo</p>
+                            </div>
+                        }
                         <div className="form-group">
-                            <input id="username" type="text" className="form-control login-form-control" placeholder="Username " onChange={this.changeValue} required
-                                   title="Completa este campo."/>
-                        </div>
-                        <div className="form-group">
-                            <input id="password" type="password" className="form-control login-form-control" placeholder="Password " onChange={this.changeValue} required
-                                    title="Completa este campo."/>
-                        </div>
-                        <div className="form-group">
-                            <input type="submit" className="btnSubmit" value="Login" onClick={this.signIn}/>
+                            <input type="button" className="btnSubmit" value="Login" onClick={this.validate}/>
                         </div>
                         <div className="form-group">
                             <a href="#" className="btnForgetPwd">Forget Password?</a>
                         </div>
-
                     </div>
                     <div className="logo" />
                 </div>

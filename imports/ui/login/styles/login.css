@@ -1,6 +1,6 @@
 .login-container{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2%;
 }
 .login-form{
     padding: 8%;
@@ -39,4 +39,16 @@
 .btnForgetPwd:hover{
     text-decoration:none;
     color:#fff;
+}
+
+#checkUsername-login{
+    color: #ff0054;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 75%;
+}
+
+#checkPassword-login{
+    color: #ff0054;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 75%;
 }
