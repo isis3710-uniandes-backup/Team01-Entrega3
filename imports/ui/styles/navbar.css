@@ -3,7 +3,7 @@ div{
 }
 
 nav{
-    background-color: #f7f7f7;
+    background-color: #fff;
 }
 
 Button{
@@ -18,7 +18,7 @@ form{
 }
 
 .navbar{
-    border-bottom: 2px inset #6369d1;
+    border-bottom: 2px inset #565657;
 }
 .btnImagen{
     border: none;
