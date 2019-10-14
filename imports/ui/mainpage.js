@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
-
+import {Users, Events} from "../../api/mongoSettings";
 
 export default class mainpage extends Component {
     state = {
@@ -30,11 +30,15 @@ export default class mainpage extends Component {
         });
     }
 
-    s
-
+    componentDidMount(){
+       this.setState({
+           allEvents : Events.find({}),
+           confirmEvents : userlogged.suscribedEvents,
+           createdEvents :  userlogged.eventsOffered
+       }); 
+    }
 
     render() {
-        console.log(this.state)
         return (
             <div id="main" className="container-fluid">
                 <div className="row fullrow">
