@@ -3,7 +3,7 @@
     transition: all 0.2s;
 }
 #main{
-    font-family: 'Oxygen', 'sans-serif';
+    font-family: 'Archivo', 'sans-serif';
     min-height: 100vh;
 }
 .nav-link.active{
@@ -32,6 +32,7 @@ a:hover{
     color: #F4FAFF;
     font-weight: 400;
     font-size: 78%;
+    font-family: 'Archivo', sans-serif;
     display: inline-block;
     width: 100%;
     margin-bottom: 0.9em;

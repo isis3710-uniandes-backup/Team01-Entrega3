@@ -132,7 +132,12 @@ export default class register extends Component{
 
     render() {
         if (this.state.logueado) {
-            return <Redirect push to="/" />;
+            return <Redirect to={{
+                pathname : '/main',
+                state : {
+                    user : this.state.username
+                }
+            }} />;
         }
         return (
             <div className="container login-container">
