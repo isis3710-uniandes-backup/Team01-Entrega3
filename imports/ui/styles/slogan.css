@@ -1,0 +1,14 @@
+#slogan{
+    font-size: 3rem;
+    font-family: 'Cairo', sans-serif;
+    font-weight: bolder;
+}
+.fullHeight{
+    min-height: 90vh;
+}
+
+.btn-spoventPrincipal{
+    background-color: #6369d1;
+    color: #f4faff;
+    
+}
