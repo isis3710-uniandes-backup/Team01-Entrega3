@@ -108,7 +108,9 @@ export default class register extends Component{
                 name: this.state.name,
                 lastName: this.state.lastName,
                 email: this.state.email,
-                password: this.state.password
+                password: this.state.password,
+                eventsOffered: [],
+                subscribedEvents: []
             };
             let id = Users.insert(user);
             user._id = id;
