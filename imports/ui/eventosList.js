@@ -14,6 +14,7 @@ export default class EventosList extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props.username);
         let ev = [];
         let ev2 = Users.findOne({ username: this.props.username }).subscribedEvents;
         let ev3 = Users.findOne({ username: this.props.username }).eventsOffered;

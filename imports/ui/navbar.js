@@ -12,7 +12,7 @@ export default class Navbar extends Component {
         this.state = {
             busqueda: "",
             filtrados: [],
-            usuario: "",
+            usuario: this.props.usuario,
             logueado: this.props.logueado,
             logOutFunc: this.props.logOutFunc
         }
@@ -25,6 +25,11 @@ export default class Navbar extends Component {
             this.setState({
                 logueado: this.props.logueado
             });
+        }
+        if(this.props.usuario !== prevProps.usuario){
+            this.setState({
+                usuario : this.props.usuario
+            })
         }
     }
     cerrarSesion() {
@@ -64,7 +69,7 @@ export default class Navbar extends Component {
                 <nav className="navbar navbar-expand-lg navbar-light" value={this.state.usuario}>
                     <Link to={{
                         pathname : "/",
-                        state : this.state.logueado}}><strong id="brandName">Spovent</strong></Link>
+                        state : this.state.usuario}}><strong id="brandName">Spovent</strong></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
