@@ -26,7 +26,7 @@ export default class EventosList extends React.Component {
                         existe = true;
                     }
                 }
-                if(!existe){
+                if (!existe) {
                     dif.push(ev[i]);
                 }
             }
@@ -39,13 +39,13 @@ export default class EventosList extends React.Component {
                         existe = true;
                     }
                 }
-                if(!existe){
+                if (!existe) {
                     dif2.push(ev[i]);
                 }
             }
             console.log(dif2);
-            ev=dif2;
-            
+            ev = dif2;
+
         } else if (this.props.identificador === 1) {
             ev = ev2;
         } else {
@@ -58,10 +58,16 @@ export default class EventosList extends React.Component {
     }
     componentDidUpdate(prevProps) {
 
-        if (this.props.evento !== prevProps.evento && this.props.identificador === 2) {
-            console.log(this.props.evento);
+        if (this.props.createdEvent !== prevProps.createdEvent && this.props.identificador === 2) {
+            console.log(this.props.createdEvent);
             let ev = this.state.eventos;
-            ev.push(this.props.evento);
+            ev.push(this.props.createdEvent);
+            this.setState({
+                eventos: ev
+            });
+        } else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 1) {
+            let ev = this.state.eventos;
+            ev.push(this.props.joinedEvent);
             this.setState({
                 eventos: ev
             })

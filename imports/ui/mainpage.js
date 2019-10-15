@@ -51,21 +51,21 @@ export default class mainpage extends Component {
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                                 <strong>Eventos</strong>
-                                <EventosList identificador={0} username={this.state.userlogged} evento={this.state.createdEvent} joinFunction={this.join}/>
+                                <EventosList identificador={0} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} joinFunction={this.join}/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
-                            <EventosList identificador={1} username={this.state.userlogged} evento={this.state.createdEvent} />
+                            <EventosList identificador={1} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent}/>
                             </div>
 
 
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
-                                <EventosList identificador={2} username={this.state.userlogged} evento={this.state.createdEvent}/>
+                                <EventosList identificador={2} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent}/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
-                                <EventosList identificador={3} username={this.state.userlogged} evento={this.state.createdEvent}/>
+                                <EventosList identificador={3} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent}/>
                             </div>
                         </div>
                     </div>
