@@ -30,6 +30,17 @@ export default class mainpage extends Component {
         user.subscribedEvents.push(evento);
         Users.update({ _id: user._id }, user);
     }
+    disjoin = (nombre) => {
+
+        let user = Users.findOne({ username: this.state.userlogged });
+        let eventosSus = user.subscribedEvents.filter(
+            elemento => {
+               return elemento.name !== nombre
+            }
+        );
+        user.subscribedEvents = eventosSus;
+        Users.update({ _id: user._id }, user);
+    }
     render() {
         return (
             <div id="main" className="container-fluid">
@@ -51,11 +62,11 @@ export default class mainpage extends Component {
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                                 <strong>Eventos</strong>
-                                <EventosList identificador={0} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} joinFunction={this.join}/>
+                                <EventosList identificador={0} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} joinFunction={this.join} disJoinFuction={this.disjoin}/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
-                            <EventosList identificador={1} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent}/>
+                            <EventosList identificador={1} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinFuction={this.disjoin}/>
                             </div>
 
 

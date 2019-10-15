@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 export default class event extends Component {
-    constructor(props) {
+    constructor(props) 
+    {
         super(props);
         this.state = {
             nombre: this.props.event.name,
@@ -17,11 +18,14 @@ export default class event extends Component {
             deporte: this.props.event.sport,
             cantidadPersonas: this.props.event.people,
             joinFunction: this.props.joinFunction,
+            disJoinFunction : this.props.disJoinFunction,
             inscrito : false
         }
         this.join = this.join.bind(this);
+        this.disJoin = this.disJoin.bind(this);
     }
-    join() {
+    join() 
+    {
         const ev = {
             name: this.state.nombre,
             address: this.state.lugar,
@@ -35,16 +39,10 @@ export default class event extends Component {
         })
         this.state.joinFunction(ev);
     }
-    disJoin() {
-        const ev = {
-            name: this.state.nombre,
-            address: this.state.lugar,
-            date: this.state.fecha,
-            sport: this.state.deporte,
-            detail: this.state.descripcion,
-            people: this.state.cantidadPersonas
-        };
-        this.state.joinFunction(ev);
+    disJoin() 
+    {
+        console.log(this.state);
+        this.state.disJoinFunction(this.state.nombre);
     }
     render() {
         console.log(this.props.event)

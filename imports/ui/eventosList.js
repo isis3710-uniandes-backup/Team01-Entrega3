@@ -8,7 +8,8 @@ export default class EventosList extends React.Component {
         super(props);
         this.state = {
             eventos: [],
-            joinFunction: this.props.joinFunction
+            joinFunction: this.props.joinFunction,
+            disJoinFuction : this.props.disJoinFuction
         }
     }
 
@@ -19,7 +20,6 @@ export default class EventosList extends React.Component {
         if (this.props.identificador === 0) 
         {
             ev = Events.find({}).fetch();
-            console.log(ev);
             let dif = [];
             for (let i = 0; i < ev.length; i++) 
             {
@@ -36,8 +36,6 @@ export default class EventosList extends React.Component {
                     dif.push(ev[i]);
                 }
             }
-            console.log(dif);
-            console.error(ev3);
             let dif2 = [];
             for (let i = 0; i < dif.length; i++) 
             {
@@ -46,7 +44,6 @@ export default class EventosList extends React.Component {
                 {
                     if (dif[i].name === ev3[j].name) 
                     {
-                        console.log("J " + ev3[j].name + " j" + j + " i" + i  );
                         existe = true;
                     }
                 }
@@ -55,7 +52,6 @@ export default class EventosList extends React.Component {
                     dif2.push(dif[i]);
                 }
             }
-            console.log(dif2);
             ev = dif2;
 
         } 
@@ -94,7 +90,7 @@ export default class EventosList extends React.Component {
     render() {
         return (
             <div className="row">
-                {this.state.eventos.map((e, i) => <Event key={i} event={e} joinFunction={this.state.joinFunction} id={this.props.identificador} />)}
+                {this.state.eventos.map((e, i) => <Event key={i} event={e}  disJoinFuction={this.state.disJoinFuction} joinFunction={this.state.joinFunction} id={this.props.identificador} />)}
             </div>
         )
     };
