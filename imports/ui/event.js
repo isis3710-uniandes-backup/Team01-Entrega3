@@ -16,7 +16,8 @@ export default class event extends Component {
             descripcion: this.props.event.detail,
             deporte: this.props.event.sport,
             cantidadPersonas: this.props.event.people,
-            joinFunction: this.props.joinFunction
+            joinFunction: this.props.joinFunction,
+            inscrito : false
         }
         this.join = this.join.bind(this);
     }
@@ -29,6 +30,9 @@ export default class event extends Component {
             detail: this.state.descripcion,
             people: this.state.cantidadPersonas
         };
+        this.setState({
+            inscrito : true
+        })
         this.state.joinFunction(ev);
     }
     disJoin() {
@@ -43,6 +47,7 @@ export default class event extends Component {
         this.state.joinFunction(ev);
     }
     render() {
+        console.log(this.props.event)
         return (
             <div className="col-md-4">
                 <div className="card mt-4">
@@ -56,11 +61,12 @@ export default class event extends Component {
                                     {
                                         this.props.id !== 2
                                             ?
-                                            this.props.id===0?
+                                            (this.props.id===0) ? (!this.state.inscrito) ? 
                                             <a href="#" onClick={this.join}>
                                                 <img src="https://image.flaticon.com/icons/svg/189/189689.svg" alt="Boton Unirme" height="50" width="50" />
                                                 <p>Unirme</p>
-                                            </a>
+                                            </a> :  
+                                               <p>Inscrito</p>
                                             :
                                             <a href="#" onClick={this.disJoin}>
                                                 <img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" alt="Boton Salirme" height="50" width="50" />
