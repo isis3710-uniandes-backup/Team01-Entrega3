@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
-import { Events } from '../api/mongoSettings';
+import { Users,Events } from '../api/mongoSettings';
 
 
 export default class mainpage extends Component {
@@ -20,6 +20,12 @@ export default class mainpage extends Component {
             confirmEvents: confirmados
         });
         
+        let user=Users.findOne({username: this.state.userlogged});
+        user.subscribedEvents.push(evento);
+        console.log(user);
+        Users.update( { username: user.username },user);
+         
+        
     }
     create = (evento) => {
         let todos = this.state.allEvents;
@@ -30,13 +36,16 @@ export default class mainpage extends Component {
             allEvents: todos,
             createdEvents: creados
         });
+        
+        let user=Users.findOne({username: this.state.userlogged});
+        console.log(user);
+        user.eventsOffered.push(evento);
+        console.log(user);
+        Users.update( { username: user.username },user);
         Events.insert(evento);
+        
 
     }
-
-    s
-
-
     render() {
         console.log(this.state)
         return (

@@ -6,6 +6,7 @@ import {
   KeyboardDateTimePicker,
 } from '@material-ui/pickers';
 import TextField from '@material-ui/core/TextField';
+import Swal from 'sweetalert2';
 
 export default class CreateEvent extends React.Component {
   constructor(props) {
@@ -23,6 +24,8 @@ export default class CreateEvent extends React.Component {
     this.create = this.create.bind(this);
   }
   create() {
+    if(this.state.nombre!==""&&this.state.lugar!==""&&this.state.date!==""&&this.state.sport!==""&&this.state.people!=="")
+    {
     const ev = {
       name: this.state.nombre,
       address: this.state.lugar,
@@ -31,8 +34,21 @@ export default class CreateEvent extends React.Component {
       detail: this.state.descripcion,
       people: this.state.cantidadPersonas
     };
-    console.log(ev);
     this.state.createFunction(ev);
+    Swal.fire({
+      type: 'success',
+      title: 'Evento Creado' ,
+      text: 'Ahora todos pueden ver y unirse a tu evento',
+      timer: 3000
+  });
+  }else{
+    Swal.fire({
+      type: 'error',
+      title: 'Campo(s) vacio(s)',
+      text: 'Rellena todos los campos requeridos para poder crear tu evento',
+      timer: 1500
+  });
+  }
   }
   setSelectedDate = date => {
     this.setState({
@@ -91,7 +107,6 @@ export default class CreateEvent extends React.Component {
                   margin="normal"
                 />
                 <TextField
-                  required
                   id="descripcion"
                   label="Info adicional"
                   defaultValue={this.state.descripcion}
