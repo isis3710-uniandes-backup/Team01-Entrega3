@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../ui/styles/navbar.css';
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2';
 import {Events} from "../api/mongoSettings";
 
 
@@ -34,11 +33,6 @@ export default class Navbar extends Component {
             logueado: false
         });
         this.state.logOutFunc();
-        Swal.fire({
-            title: 'Adios!',
-            text: 'Tus eventos te estaran esperando!',
-            timer: 3000
-        })
     }
     changeValue(e) {
         this.setState({
@@ -92,7 +86,7 @@ export default class Navbar extends Component {
                                         <img className="img-circle" src="https://image.flaticon.com/icons/svg/1301/1301464.svg" width="30" height="30"></img> 
                                     </button>
                                     <div className="dropdown-menu">
-                                        <a className="dropdown-item" href="#" onClick={this.cerrarSesion}>Cerrar Sesión</a>
+                                        <a className="dropdown-item" href="/" onClick={this.cerrarSesion}>Cerrar Sesión</a>
                                     </div>
                                 </div>
                             </li>
