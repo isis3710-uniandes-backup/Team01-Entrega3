@@ -27,24 +27,12 @@ import { Users, Events } from "../api/mongoSettings";
         this.setState({
             createdEvents: creados
         });
-<<<<<<< HEAD
-=======
-        
-        let user=Users.findOne({username: this.state.userlogged});
-        user.eventsOffered.push(evento);
-        Users.update( { username: user.username },user);
-        Events.insert(evento);
->>>>>>> 0a0c119088e0eae575c2d5df9052baac0759fdbf
 
         let user = Users.findOne({username: this.state.userlogged});
         console.log(user.eventsOffered);
         user.eventsOffered.push(evento);
         Users.update( { _id: user._id },user);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0a0c119088e0eae575c2d5df9052baac0759fdbf
     render() {
         return (
             <div id="main" className="container-fluid">
