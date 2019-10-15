@@ -35,12 +35,6 @@ export default class CreateEvent extends React.Component {
       people: this.state.cantidadPersonas
     };
     this.state.createFunction(ev);
-    Swal.fire({
-      type: 'success',
-      title: 'Evento Creado' ,
-      text: 'Ahora todos pueden ver y unirse a tu evento',
-      timer: 3000
-  });
   }else{
     Swal.fire({
       type: 'error',

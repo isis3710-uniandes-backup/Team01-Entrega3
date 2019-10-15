@@ -85,18 +85,6 @@ export default class EventosList extends React.Component {
                 eventos: ev
             })
         }
-        else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 0) {
-            let ev = this.state.eventos;
-            let index = -1;
-            ev.forEach((event,i)=>{
-                if(event._id == this.props.joinedEvent._id)
-                    index = i;
-            });
-            ev.splice(index, 1);
-            this.setState({
-                eventos: ev
-            })
-        }
         else if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 1) {
             let ev = this.state.eventos;
             let index = -1;
@@ -105,13 +93,6 @@ export default class EventosList extends React.Component {
                    index = i;
             });
             ev.splice(index, 1);
-            this.setState({
-                eventos: ev
-            })
-        }
-        else if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 0) {
-            let ev = this.state.eventos;
-            ev.push(this.props.disJoinedEvent);
             this.setState({
                 eventos: ev
             })

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Swal from "sweetalert2";
+import {Users} from "../api/mongoSettings";
 
 export default class event extends Component {
     constructor(props) 
@@ -43,19 +45,37 @@ export default class event extends Component {
     }
 
     disJoin() {
-        let ev = {
-            name: this.state.nombre,
-            address: this.state.lugar,
-            date: this.state.fecha2,
-            sport: this.state.deporte,
-            detail: this.state.descripcion,
-            people: this.state.cantidadPersonas,
-            _id: this.state._id
-        };
-        this.state.disJoinFunction(ev);
-        this.setState({
-            inscrito : false
-        })
+        Swal.fire({
+            title: 'Estas Seguro?',
+            text: "Piensalo Bien!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Quiero desuscribirme!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'Te has desuscrito exitosamente' ,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                let ev = {
+                    name: this.state.nombre,
+                    address: this.state.lugar,
+                    date: this.state.fecha2,
+                    sport: this.state.deporte,
+                    detail: this.state.descripcion,
+                    people: this.state.cantidadPersonas,
+                    _id: this.state._id
+                };
+                this.state.disJoinFunction(ev);
+                this.setState({
+                    inscrito : false
+                })
+            }
+        });
     }
 
     render() {

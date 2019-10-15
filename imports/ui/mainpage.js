@@ -3,6 +3,7 @@ import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
 import { Users, Events } from "../api/mongoSettings";
+import Swal from "sweetalert2";
 
 export default class mainpage extends Component {
     state = {
@@ -23,6 +24,12 @@ export default class mainpage extends Component {
         let user = Users.findOne({ username: this.state.userlogged });
         user.eventsOffered.push(evento);
         Users.update({ _id: user._id }, user);
+        Swal.fire({
+            type: 'success',
+            title: 'Evento creado exitosamente' ,
+            text: 'Ahora puedes ver tu nuevo evento en el apartado Creados',
+            timer: 3000
+        });
     }
 
     join = (evento) => {
@@ -32,6 +39,14 @@ export default class mainpage extends Component {
         let user = Users.findOne({ username: this.state.userlogged });
         user.subscribedEvents.push(evento);
         Users.update({ _id: user._id }, user);
+        Swal.fire({
+            type: 'success',
+            position: 'top-end',
+            title: 'Te has suscrito exitosamente' ,
+            text: 'Ten presente la fecha del evento!',
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 
     disJoin = (evento) => {
