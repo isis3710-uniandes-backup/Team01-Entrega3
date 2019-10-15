@@ -28,6 +28,7 @@ export default class mainpage extends Component {
     }
     create = (evento) => {
         let todos = this.state.allEvents;
+        console.log(this.state.allEvents);
         todos.push(evento);
         let creados = this.state.createdEvents;
         creados.push(evento);
@@ -37,23 +38,12 @@ export default class mainpage extends Component {
         });
         
         let user=Users.findOne({username: this.state.userlogged});
-        console.log(user);
         user.eventsOffered.push(evento);
-        console.log(user);
         Users.update( { username: user.username },user);
         Events.insert(evento);
         
-
     }
 
-    componentDidMount(){
-        console.log(this.state)
-       this.setState({
-           allEvents : Events.find({}),
-           confirmEvents : this.state.userlogged.suscribedEvents,
-           createdEvents :  this.state.userlogged.eventsOffered
-       }); 
-    }
 
     render() {
         return (
