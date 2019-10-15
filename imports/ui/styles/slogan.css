@@ -8,8 +8,8 @@
 }
 
 .btn-spoventPrincipal{
-    background-color: #6369d1;
-    color: #f4faff;
+    border-color: #6369d1;
+    color: #000000;
     font-family: 'Cairo', sans-serif;
 }
 #brandName{
