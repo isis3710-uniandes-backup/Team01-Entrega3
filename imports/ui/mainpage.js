@@ -3,14 +3,10 @@ import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
 import { Users, Events } from "../api/mongoSettings";
-import { withTracker } from 'meteor/react-meteor-data';
 
- class mainpage extends Component {
+ export default class mainpage extends Component {
     state = {
         userlogged: (this.props.location.state !== undefined) ? this.props.location.state.user : -1,
-        allEvents: [],
-        confirmEvents: [],
-        createdEvents: [],
         filteredEvents: this.props.location.state.filteredEvents !== undefined ? this.props.location.state.filteredEvents : []
     }
     join = (evento) => {
@@ -21,27 +17,22 @@ import { withTracker } from 'meteor/react-meteor-data';
         });
         let user=Users.findOne({username: this.state.userlogged});
         user.subscribedEvents.push(evento);
-        console.log(user);
         Users.update( { username: user.username },user);
     }
     create = (evento) => {
-        let todos = this.state.allEvents;
-        console.log(this.state.allEvents);
-        todos.push(evento);
+       let m =  Events.insert(evento);
+        console.log(m);
         let creados = this.state.createdEvents;
         creados.push(evento);
         this.setState({
-            allEvents: todos,
             createdEvents: creados
         });
-        
-        let user=Users.findOne({username: this.state.userlogged});
+
+        let user = Users.findOne({username: this.state.userlogged});
+        console.log(user.eventsOffered);
         user.eventsOffered.push(evento);
-        Users.update( { username: user.username },user);
-        Events.insert(evento);
-
+        Users.update( { _id: user._id },user);
     }
-
     render() {
         return (
             <div id="main" className="container-fluid">
@@ -63,19 +54,21 @@ import { withTracker } from 'meteor/react-meteor-data';
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                                 <strong>Eventos</strong>
-                                <EventosList eventos={this.props.allEvents} joinFunction={this.join} />
+                                <EventosList identificador={0} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
-                            <EventosList eventos={this.props.confirmEvents} joinFunction={this.join} />
+                            <EventosList identificador={1} joinFunction={this.join} />
                             </div>
+
+                            
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
-                                <EventosList eventos={this.state.createdEvents} joinFunction={this.join} />
+                                <EventosList identificador={2} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
-                                <EventosList eventos={this.state.filteredEvents} joinFunction={this.join} />
+                                <EventosList identificador={3} joinFunction={this.join} />
                             </div>
                         </div>
                     </div>
@@ -84,8 +77,3 @@ import { withTracker } from 'meteor/react-meteor-data';
         )
     }
 }
-export default withTracker(() => {
-    return {
-        allEvents : Events.find({}).fetch(),
-    };
-})(mainpage)
