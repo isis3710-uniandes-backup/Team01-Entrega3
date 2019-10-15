@@ -12,6 +12,7 @@ export default class event extends Component {
                 [this.props.event.date.getHours(),
                 this.props.event.date.getMinutes(),
                 this.props.event.date.getSeconds()].join(':'),
+            fecha2:this.props.event.date,
             descripcion: this.props.event.detail,
             deporte: this.props.event.sport,
             cantidadPersonas: this.props.event.people,
@@ -23,7 +24,7 @@ export default class event extends Component {
         const ev = {
             name: this.state.nombre,
             address: this.state.lugar,
-            date: this.state.fecha,
+            date: this.state.fecha2,
             sport: this.state.deporte,
             detail: this.state.descripcion,
             people: this.state.cantidadPersonas

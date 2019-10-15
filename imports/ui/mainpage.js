@@ -28,7 +28,7 @@ export default class mainpage extends Component {
         });
         let user = Users.findOne({ username: this.state.userlogged });
         user.subscribedEvents.push(evento);
-        Users.update({ username: user.username }, user);
+        Users.update({ _id: user._id }, user);
     }
     render() {
         return (
