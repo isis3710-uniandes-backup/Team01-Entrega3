@@ -62,7 +62,7 @@ export default class Navbar extends Component {
     render() {
         return (
                 <nav className="navbar navbar-expand-lg navbar-light" value={this.state.usuario}>
-                    <Link to="/"><img className="img-circle" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/400/2319488400_9ae772ff-d97b-4ad7-b074-2b095a18337a.png?cb=1570928773" id="logo" alt="Logo" width="100" height="40"></img></Link>
+                    <Link to="/"><strong id="brandName">Spovent</strong></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -72,11 +72,11 @@ export default class Navbar extends Component {
                         </form>
                         {console.log("filtered events "+ this.state.filtrados)}
                         {console.log("busqueda "+ this.state.busqueda)}
-                        <Link onClick={this.filtrar}  to={{
+                        <Link  onClick={this.filtrar}  to={{
                                 pathname : '/',
                                 state : {
                                     filteredEvents : this.state.filtrados
-                                }}} id="buscarButton" className="btn btn-dark" 
+                                }}} id="buscarButton" className="btn btn-navbar" 
                                 type="submit" >Buscar</Link>
                         {this.state.logueado ? 
                         <ul className="nav navbar-nav ml-auto">
@@ -94,12 +94,12 @@ export default class Navbar extends Component {
                                 <div className="btn-group dropleft">
                                     <li className="nav-item ">
                                         <Link to="/login" >
-                                            <button id="butlogin" type="button" className="btn btn-dark"> Inicia sesión </button>
+                                            <button id="butlogin" type="button" className="btn btn-navbar"> Inicia sesión </button>
                                         </Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link to="/register">
-                                            <button id="butReg" type="button" className="btn btn-dark">Regístrate </button>
+                                            <button id="butReg" type="button" className="btn btn-navbar">Regístrate </button>
                                         </Link>
                                     </li>
                                 </div>

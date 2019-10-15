@@ -17,8 +17,9 @@ form{
     font-weight: bolder;
 }
 
+
 .navbar{
-    border-bottom: 2px inset #565657;
+    border-bottom: 2px inset #88888b;
 }
 .btnImagen{
     border: none;
@@ -41,8 +42,20 @@ form{
     text-align:center;
 }
 
-#searchButton{
+#buscarButton{
     margin : 0.8rem;
+
+}
+.btn-navbar{
+    border-color: #6369d1;
+    font-weight: bold;
+    transition: all 0.4s;
+}
+
+.btn-navbar:hover{
+    background-color: #6369d1;
+    border-color: #2b303a;
+    color : white;
 }
 
 
