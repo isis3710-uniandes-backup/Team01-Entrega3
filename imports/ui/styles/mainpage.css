@@ -5,6 +5,8 @@
 #main{
     font-family: 'Archivo', 'sans-serif';
     min-height: 100vh;
+    background-color: #f5f0f0;
+
 }
 .nav-link.active{
     font-weight: bold; 
@@ -19,10 +21,6 @@ a:hover{
 .fullrow{
     margin: 0.1em;
     padding: 0.5em;
-}
-#main{
-    background-color: #f7f7f7;
-
 }
 #v-pills-tab{
     align-self: center;
