@@ -31,7 +31,6 @@ export default class CreateEvent extends React.Component {
       detail: this.state.descripcion,
       people: this.state.cantidadPersonas
     };
-    console.log(ev);
     this.state.createFunction(ev);
   }
   setSelectedDate = date => {
