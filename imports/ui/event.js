@@ -41,11 +41,12 @@ export default class event extends Component {
     }
     disJoin() 
     {
-        console.log(this.state);
-        this.state.disJoinFunction(this.state.nombre);
+        this.setState({
+            inscrito : false
+        })
+       // this.state.disJoinFunction(this.state.nombre);
     }
     render() {
-        console.log(this.props.event)
         return (
             <div className="col-md-4">
                 <div className="card mt-4">
