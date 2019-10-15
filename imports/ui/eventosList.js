@@ -3,7 +3,8 @@ import Event from './event';
 import { Users, Events } from "../api/mongoSettings";
 
 export default class EventosList extends React.Component {
-    constructor(props) {
+    constructor(props) 
+    {
         super(props);
         this.state = {
             eventos: [],
@@ -16,40 +17,51 @@ export default class EventosList extends React.Component {
         let ev = [];
         let ev2 = Users.findOne({ username: this.props.username }).subscribedEvents;
         let ev3 = Users.findOne({ username: this.props.username }).eventsOffered;
-        if (this.props.identificador === 0) {
+        console.log("en eventosList: ")
+        console.log(ev2)
+        if (this.props.identificador === 0) 
+        {
             ev = Events.find({}).fetch();
             let dif = [];
-            console.log(ev)
-            for (let i = 0; i < ev.length; i++) {
+            for (let i = 0; i < ev.length; i++) 
+            {
                 let existe = false;
-                for (let j = 0; j < ev2.length; j++) {
-                    if (ev[i].name === ev2[j].name) {
+                for (let j = 0; j < ev2.length; j++) 
+                {
+                    if (ev[i].name === ev2[j].name) 
+                    {
                         existe = true;
                     }
                 }
-                if (!existe) {
+                if (!existe) 
+                {
                     dif.push(ev[i]);
                 }
             }
-            console.log(dif);
             let dif2 = [];
-            for (let i = 0; i < dif.length; i++) {
+            for (let i = 0; i < dif.length; i++) 
+            {
                 let existe = false;
-                for (let j = 0; j < ev3.length; j++) {
-                    if (dif[i].name === ev3[j].name) {
+                for (let j = 0; j < ev3.length; j++) 
+                {
+                    if (dif[i].name === ev3[j].name) 
+                    {
                         existe = true;
                     }
                 }
-                if (!existe) {
-                    dif2.push(ev[i]);
+                if (!existe) 
+                {
+                    dif2.push(dif[i]);
                 }
             }
-            console.log(dif2);
             ev = dif2;
 
-        } else if (this.props.identificador === 1) {
+        } 
+        else if (this.props.identificador === 1) 
+        {
             ev = ev2;
-        } else {
+        } else 
+        {
             ev = ev3;
         }
 
@@ -58,15 +70,15 @@ export default class EventosList extends React.Component {
         });
     }
     componentDidUpdate(prevProps) {
-
-        if (this.props.createdEvent !== prevProps.createdEvent && this.props.identificador === 2) {
-            console.log("En eventosLists: " + this.props.createdEvent);
+        if (this.props.createdEvent !== prevProps.createdEvent && this.props.identificador === 2) 
+        {
             let ev = this.state.eventos;
             ev.push(this.props.createdEvent);
             this.setState({
                 eventos: ev
             });
-        } else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 1) {
+        } else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 1) 
+        {
             let ev = this.state.eventos;
             ev.push(this.props.joinedEvent);
             this.setState({
@@ -80,7 +92,7 @@ export default class EventosList extends React.Component {
                if(event._id == this.props.disJoinedEvent._id)
                    index = i;
             });
-            console.log(index)
+            console.log("En eventosListDidUpdate")
             console.log(ev)
             ev.splice(index, 1);
             this.setState({

@@ -32,7 +32,6 @@ export default class mainpage extends Component {
         user.subscribedEvents.push(evento);
         Users.update({ _id: user._id }, user);
     }
-
     disJoin = (evento) => {
         this.setState({
             disJoinedEvent: evento
@@ -69,11 +68,11 @@ export default class mainpage extends Component {
                                 <strong>Eventos</strong>
                                 <EventosList identificador={0} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} joinFunction={this.join} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
                             </div>
+
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
-                            <EventosList identificador={1} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
+                                <EventosList identificador={1} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
                             </div>
-
 
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
