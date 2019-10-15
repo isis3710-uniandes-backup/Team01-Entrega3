@@ -39,15 +39,9 @@ import { withTracker } from 'meteor/react-meteor-data';
         user.eventsOffered.push(evento);
         Users.update( { username: user.username },user);
         Events.insert(evento);
-<<<<<<< HEAD
 
     }
 
-=======
-        
-    }
-    
->>>>>>> 9ef1b8a3c42d4be93911cf44bdac4b72909a6dee
     render() {
         return (
             <div id="main" className="container-fluid">
