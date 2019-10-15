@@ -27,7 +27,7 @@ export default class event extends Component {
     }
     join() 
     {
-        const ev = {
+        let ev = {
             name: this.state.nombre,
             address: this.state.lugar,
             date: this.state.fecha2,
@@ -43,10 +43,10 @@ export default class event extends Component {
     }
 
     disJoin() {
-        const ev = {
+        let ev = {
             name: this.state.nombre,
             address: this.state.lugar,
-            date: this.state.fecha,
+            date: this.state.fecha2,
             sport: this.state.deporte,
             detail: this.state.descripcion,
             people: this.state.cantidadPersonas,

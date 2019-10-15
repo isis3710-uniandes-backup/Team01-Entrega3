@@ -24,6 +24,7 @@ export default class mainpage extends Component {
         user.eventsOffered.push(evento);
         Users.update({ _id: user._id }, user);
     }
+
     join = (evento) => {
         this.setState({
             joinedEvent: evento
@@ -32,6 +33,7 @@ export default class mainpage extends Component {
         user.subscribedEvents.push(evento);
         Users.update({ _id: user._id }, user);
     }
+
     disJoin = (evento) => {
         this.setState({
             disJoinedEvent: evento
