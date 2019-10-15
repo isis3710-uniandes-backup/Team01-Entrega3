@@ -40,19 +40,7 @@ export default class mainpage extends Component {
         Events.insert(evento);
         
     }
-    componentDidMount() {
-        this.getEvents(() => {
-            return Users.findOne({ username: this.state.userlogged });
-        })
-
-    };
-    getEvents(encontrar) {
-        this.setState({
-            allEvents: Events.find({}),
-            confirmEvents: encontrar.suscribedEvents,
-            createdEvents: encontrar.eventsOffered
-        });
-    }
+    
     render() {
         return (
             <div id="main" className="container-fluid">
