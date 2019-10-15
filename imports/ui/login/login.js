@@ -3,6 +3,7 @@ import './styles/login.css';
 import {Users} from "../../api/mongoSettings";
 import { Redirect } from 'react-router';
 import Swal from 'sweetalert2';
+import {Link} from "react-router-dom";
 
 let checkUsername = true;
 let checkPassword = true;
@@ -90,40 +91,47 @@ export default class login extends Component{
         return (
             <div className="container login-container">
                 <div className="row">
-                    <div className="col-md-6 offset-md-3 login-form">
-                        <h3>Ingresar</h3>
-                        {checkUsername ?
-                            <div className="form-group">
-                                <input id="username" type="text" className="form-control login-form-control" placeholder="Nombre de Usuario "
-                                       onChange={this.changeValue}/>
+                    <div className="col-md-2 spovent-logo">
+                        <Link to="/"><strong id="brandName-login">Spovent</strong></Link>
+                    </div>
+                    <div className="col-md-10">
+                        <div className="row">
+                            <div className="col-md-6 offset-md-3 login-form">
+                                <h3>Ingresar</h3>
+                                {checkUsername ?
+                                    <div className="form-group">
+                                        <input id="username" type="text" className="form-control login-form-control" placeholder="Nombre de Usuario "
+                                               onChange={this.changeValue}/>
+                                    </div>
+                                    :
+                                    <div className="form-group">
+                                        <input id="username" type="text" className="form-control login-form-control" placeholder="Nombre de Usuario "
+                                               onChange={this.changeValue}/>
+                                        <p id="checkUsername-login">*Rellena este campo</p>
+                                    </div>
+                                }
+                                {checkPassword ?
+                                    <div className="form-group">
+                                        <input id="password" type="password" className="form-control login-form-control" placeholder="Contraseña "
+                                               onChange={this.changeValue}/>
+                                    </div>
+                                    :
+                                    <div className="form-group">
+                                        <input id="password" type="password" className="form-control login-form-control" placeholder="Contraseña "
+                                               onChange={this.changeValue}/>
+                                        <p id="checkPassword-login">*Rellena este campo</p>
+                                    </div>
+                                }
+                                <div className="form-group">
+                                    <input type="button" className="btnSubmit" value="Ingresar" onClick={this.validate}/>
+                                </div>
+                                <div className="form-group">
+                                    <a href="/register" className="btnForgetPwd">No tienes cuenta? Registrate aquí</a>
+                                </div>
                             </div>
-                            :
-                            <div className="form-group">
-                                <input id="username" type="text" className="form-control login-form-control" placeholder="Nombre de Usuario "
-                                       onChange={this.changeValue}/>
-                                <p id="checkUsername-login">*Rellena este campo</p>
-                            </div>
-                        }
-                        {checkPassword ?
-                            <div className="form-group">
-                                <input id="password" type="password" className="form-control login-form-control" placeholder="Contraseña "
-                                       onChange={this.changeValue}/>
-                            </div>
-                            :
-                            <div className="form-group">
-                                <input id="password" type="password" className="form-control login-form-control" placeholder="Contraseña "
-                                       onChange={this.changeValue}/>
-                                <p id="checkPassword-login">*Rellena este campo</p>
-                            </div>
-                        }
-                        <div className="form-group">
-                            <input type="button" className="btnSubmit" value="Ingresar" onClick={this.validate}/>
-                        </div>
-                        <div className="form-group">
-                            <a href="/register" className="btnForgetPwd">No tienes cuenta? Registrate aquí</a>
+                            <div className="logo"/>
                         </div>
                     </div>
-                    <div className="logo"/>
                 </div>
             </div>
         )

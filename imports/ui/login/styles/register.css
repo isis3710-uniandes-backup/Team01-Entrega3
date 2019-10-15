@@ -1,3 +1,7 @@
+.register-container{
+    padding: 8% 0%;
+}
+
 .register-form{
     padding: 5% 7%;
     background:#2b303a;
@@ -15,4 +19,9 @@
     color: #ff0054;
     font-family: 'Open Sans', sans-serif;
     font-size: 75%;
+}
+
+.spovent-logo-register a{
+    position: absolute;
+    padding: 120% 50%;
 }
