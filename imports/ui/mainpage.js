@@ -3,8 +3,9 @@ import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
 import { Users, Events } from "../api/mongoSettings";
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class mainpage extends Component {
+ class mainpage extends Component {
     state = {
         userlogged: (this.props.location.state !== undefined) ? this.props.location.state.user : -1,
         allEvents: [],
@@ -18,10 +19,14 @@ export default class mainpage extends Component {
         this.setState({
             confirmEvents: confirmados
         });
-
+        let user=Users.findOne({username: this.state.userlogged});
+        user.subscribedEvents.push(evento);
+        console.log(user);
+        Users.update( { username: user.username },user);
     }
     create = (evento) => {
         let todos = this.state.allEvents;
+        console.log(this.state.allEvents);
         todos.push(evento);
         let creados = this.state.createdEvents;
         creados.push(evento);
@@ -29,24 +34,20 @@ export default class mainpage extends Component {
             allEvents: todos,
             createdEvents: creados
         });
+        
+        let user=Users.findOne({username: this.state.userlogged});
+        user.eventsOffered.push(evento);
+        Users.update( { username: user.username },user);
         Events.insert(evento);
+<<<<<<< HEAD
 
     }
 
-    componentDidMount() {
-        this.getEvents(() => {
-            return Users.findOne({ username: this.state.userlogged });
-        })
-
-    };
-    getEvents(encontrar) {
-        this.setState({
-            allEvents: Events.find({}),
-            confirmEvents: encontrar.suscribedEvents,
-            createdEvents: encontrar.eventsOffered
-        });
+=======
+        
     }
-
+    
+>>>>>>> 9ef1b8a3c42d4be93911cf44bdac4b72909a6dee
     render() {
         return (
             <div id="main" className="container-fluid">
@@ -68,11 +69,11 @@ export default class mainpage extends Component {
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                                 <strong>Eventos</strong>
-                                <EventosList eventos={this.state.allEvents} joinFunction={this.join} />
+                                <EventosList eventos={this.props.allEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
-                            <EventosList eventos={this.state.confirmEvents} joinFunction={this.join} />
+                            <EventosList eventos={this.props.confirmEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
@@ -89,3 +90,8 @@ export default class mainpage extends Component {
         )
     }
 }
+export default withTracker(() => {
+    return {
+        allEvents : Events.find({}).fetch(),
+    };
+})(mainpage)
