@@ -60,6 +60,8 @@ import { Users, Events } from "../api/mongoSettings";
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
                             <EventosList identificador={1} joinFunction={this.join} />
                             </div>
+
+                            
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
                                 <EventosList identificador={2} joinFunction={this.join} />
