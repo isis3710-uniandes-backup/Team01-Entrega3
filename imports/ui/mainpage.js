@@ -19,10 +19,14 @@ import { withTracker } from 'meteor/react-meteor-data';
         this.setState({
             confirmEvents: confirmados
         });
-
+        let user=Users.findOne({username: this.state.userlogged});
+        user.subscribedEvents.push(evento);
+        console.log(user);
+        Users.update( { username: user.username },user);
     }
     create = (evento) => {
         let todos = this.state.allEvents;
+        console.log(this.state.allEvents);
         todos.push(evento);
         let creados = this.state.createdEvents;
         creados.push(evento);
@@ -30,10 +34,20 @@ import { withTracker } from 'meteor/react-meteor-data';
             allEvents: todos,
             createdEvents: creados
         });
+        
+        let user=Users.findOne({username: this.state.userlogged});
+        user.eventsOffered.push(evento);
+        Users.update( { username: user.username },user);
         Events.insert(evento);
+<<<<<<< HEAD
 
     }
 
+=======
+        
+    }
+    
+>>>>>>> 9ef1b8a3c42d4be93911cf44bdac4b72909a6dee
     render() {
         return (
             <div id="main" className="container-fluid">
