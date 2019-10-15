@@ -6,10 +6,10 @@ export default class event extends Component {
         this.state = {
             nombre: this.props.event.name,
             lugar: this.props.event.address,
-            fecha: [this.props.event.date.getMonth()+1,
-                this.props.event.date.getDate(),
-                this.props.event.date.getFullYear()].join('/')+' '+
-               [this.props.event.date.getHours(),
+            fecha: [this.props.event.date.getMonth() + 1,
+            this.props.event.date.getDate(),
+            this.props.event.date.getFullYear()].join('/') + ' ' +
+                [this.props.event.date.getHours(),
                 this.props.event.date.getMinutes(),
                 this.props.event.date.getSeconds()].join(':'),
             descripcion: this.props.event.detail,
@@ -17,19 +17,30 @@ export default class event extends Component {
             cantidadPersonas: this.props.event.people,
             joinFunction: this.props.joinFunction
         }
-        this.join=this.join.bind(this);  
+        this.join = this.join.bind(this);
     }
-    join(){
-        const ev={
-          name:this.state.nombre,
-          address:this.state.lugar,
-          date:this.state.fecha,
-          sport:this.state.deporte,
-          detail:this.state.descripcion,
-          people:this.state.cantidadPersonas
+    join() {
+        const ev = {
+            name: this.state.nombre,
+            address: this.state.lugar,
+            date: this.state.fecha,
+            sport: this.state.deporte,
+            detail: this.state.descripcion,
+            people: this.state.cantidadPersonas
         };
         this.state.joinFunction(ev);
-      }
+    }
+    disJoin() {
+        const ev = {
+            name: this.state.nombre,
+            address: this.state.lugar,
+            date: this.state.fecha,
+            sport: this.state.deporte,
+            detail: this.state.descripcion,
+            people: this.state.cantidadPersonas
+        };
+        this.state.joinFunction(ev);
+    }
     render() {
         return (
             <div className="col-md-4">
@@ -41,11 +52,22 @@ export default class event extends Component {
                                     <strong>{this.state.nombre}</strong>
                                 </div>
                                 <div className="col-4 text-center">
-                                    {<a href="#" onClick={this.join}>
-                                    <img src="https://image.flaticon.com/icons/svg/189/189689.svg" alt="Boton Unirme" height="50" width="50"/> 
-                                        <p>Unirme</p>
-                                    </a>
+                                    {
+                                        this.props.id !== 2
+                                            ?
+                                            this.props.id===0?
+                                            <a href="#" onClick={this.join}>
+                                                <img src="https://image.flaticon.com/icons/svg/189/189689.svg" alt="Boton Unirme" height="50" width="50" />
+                                                <p>Unirme</p>
+                                            </a>
+                                            :
+                                            <a href="#" onClick={this.disJoin}>
+                                                <img src="https://www.pngfind.com/pngs/m/3-31254_red-cross-mark-clipart-black-background-red-x.png" alt="Boton Salirme" height="50" width="50" />
+                                                <p>Salirme</p>
+                                            </a>
+                                            : false
                                     }
+
                                 </div>
                             </div>
                         </div>

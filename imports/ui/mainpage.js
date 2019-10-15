@@ -4,34 +4,31 @@ import CreateEvent from './createEvent';
 import EventosList from './eventosList';
 import { Users, Events } from "../api/mongoSettings";
 
- export default class mainpage extends Component {
+export default class mainpage extends Component {
     state = {
         userlogged: (this.props.location.state !== undefined) ? this.props.location.state.user : -1,
+        createdEvent:undefined,
+        joinedEvent:undefined,
         filteredEvents: this.props.location.state.filteredEvents !== undefined ? this.props.location.state.filteredEvents : []
     }
-    join = (evento) => {
-        let confirmados = this.state.confirmEvents;
-        confirmados.push(evento);
-        this.setState({
-            confirmEvents: confirmados
-        });
-        let user=Users.findOne({username: this.state.userlogged});
-        user.subscribedEvents.push(evento);
-        Users.update( { username: user.username },user);
-    }
+
     create = (evento) => {
-       let m =  Events.insert(evento);
-        console.log(m);
-        let creados = this.state.createdEvents;
-        creados.push(evento);
+        let m = Events.insert(evento);
         this.setState({
-            createdEvents: creados
+            createdEvent: evento
         });
 
-        let user = Users.findOne({username: this.state.userlogged});
-        console.log(user.eventsOffered);
+        let user = Users.findOne({ username: this.state.userlogged });
         user.eventsOffered.push(evento);
-        Users.update( { _id: user._id },user);
+        Users.update({ _id: user._id }, user);
+    }
+    join = (evento) => {
+        this.setState({
+            joinedEvent: evento
+        });
+        let user = Users.findOne({ username: this.state.userlogged });
+        user.subscribedEvents.push(evento);
+        Users.update({ username: user.username }, user);
     }
     render() {
         return (
@@ -54,21 +51,21 @@ import { Users, Events } from "../api/mongoSettings";
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                                 <strong>Eventos</strong>
-                                <EventosList identificador={0} joinFunction={this.join} />
+                                <EventosList identificador={0} username={this.state.userlogged} evento={this.state.createdEvent} joinFunction={this.join}/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
-                            <EventosList identificador={1} joinFunction={this.join} />
+                            <EventosList identificador={1} username={this.state.userlogged} evento={this.state.createdEvent} />
                             </div>
 
-                            
+
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
-                                <EventosList identificador={2} joinFunction={this.join} />
+                                <EventosList identificador={2} username={this.state.userlogged} evento={this.state.createdEvent}/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
-                                <EventosList identificador={3} joinFunction={this.join} />
+                                <EventosList identificador={3} username={this.state.userlogged} evento={this.state.createdEvent}/>
                             </div>
                         </div>
                     </div>
