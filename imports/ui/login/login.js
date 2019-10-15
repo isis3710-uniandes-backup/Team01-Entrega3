@@ -57,8 +57,8 @@ export default class login extends Component{
                 Swal.fire({
                     type: 'success',
                     title: 'Bienvenido de nuevo ' + user.username,
-                    text: 'Diviertete en nuestra plataforma!',
-                    timer: 3000
+                    text: '¡Diviértete en nuestra plataforma!',
+                    timer: 2000
                 });
             }
             else
@@ -72,8 +72,8 @@ export default class login extends Component{
         else
             Swal.fire({
                 type: 'error',
-                title: 'Usuario o Contraseña incorrecta',
-                text: 'Vuelve a intentarlo',
+                title: 'Usuario o contraseña incorrecta',
+                text: 'Vuelve a intentarlo.',
                 timer: 2000
             });
     }

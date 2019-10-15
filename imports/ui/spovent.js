@@ -5,6 +5,8 @@ import Navbar from './navbar';
 import Login from './login/login';
 import Register from './login/register';
 import NotFound from './notFound';
+import Home from './slogan';
+import Swal from "sweetalert2";
 
 export default class spovent extends Component {
     constructor(props) {
@@ -48,6 +50,7 @@ export default class spovent extends Component {
                     <div>
                         <Navbar logOutFunc={this.logOut} logueado={this.state.logueado}/>
                         <Switch>
+                            <Route exact path="/" component={Home}/>
                             <Route exact path="/main" component={MainPage}/>
                             <Route exact path="/login">
                                 <Login logueado={this.state.logueado} logFunc={this.loguear}/>

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
-import { Users,Events } from '../api/mongoSettings';
-
+import {Users, Events} from "../api/mongoSettings";
 
 export default class mainpage extends Component {
     state = {
@@ -46,8 +45,17 @@ export default class mainpage extends Component {
         
 
     }
-    render() {
+
+    componentDidMount(){
         console.log(this.state)
+       this.setState({
+           allEvents : Events.find({}),
+           confirmEvents : this.state.userlogged.suscribedEvents,
+           createdEvents :  this.state.userlogged.eventsOffered
+       }); 
+    }
+
+    render() {
         return (
             <div id="main" className="container-fluid">
                 <div className="row fullrow">
@@ -61,25 +69,25 @@ export default class mainpage extends Component {
                             <a className="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">Todos</a>
                             <a className="nav-link" id="v-pills-willAssist-tab" data-toggle="pill" href="#v-pills-willAssist" role="tab" aria-controls="v-pills-willAssist" aria-selected="false">Asistiré</a>
                             <a className="nav-link" id="v-pills-created-tab" data-toggle="pill" href="#v-pills-created" role="tab" aria-controls="v-pills-created" aria-selected="false">Creados</a>
-                            <a className="nav-link" id="v-pills-cancelados-tab" data-toggle="pill" href="#v-pills-cancelados" role="tab" aria-controls="v-pills-cancelados" aria-selected="false">Cancelados</a>
+                            <a className="nav-link" id="v-pills-cancelados-tab" data-toggle="pill" href="#v-pills-cancelados" role="tab" aria-controls="v-pills-cancelados" aria-selected="false">Buscados</a>
                         </div>
                     </div>
                     <div className="col-9" >
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                                Eventos
+                            <strong>Eventos</strong>
                              <EventosList eventos={this.state.allEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
-                                Eventos <i className="fa fa-angle-right"></i> Asistiré
+                            <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
                             <EventosList eventos={this.state.confirmEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
-                                Eventos <i className="fa fa-angle-right"></i> Cree
+                               <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
                                 <EventosList eventos={this.state.createdEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
-                                Eventos <i className="fa fa-angle-right"></i> Buscados
+                            <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
                                 <EventosList eventos={this.state.filteredEvents} joinFunction={this.join} />
                             </div>
                         </div>
