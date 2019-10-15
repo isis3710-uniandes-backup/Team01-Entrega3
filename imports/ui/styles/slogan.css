@@ -10,5 +10,20 @@
 .btn-spoventPrincipal{
     background-color: #6369d1;
     color: #f4faff;
-    
+    font-family: 'Cairo', sans-serif;
+}
+#brandName{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: #ff0054;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+#brandName:hover {
+    text-decoration: none !important;
+    font-size: 1.9rem ;
+}
+a:hover{
+    text-decoration: none;
 }
