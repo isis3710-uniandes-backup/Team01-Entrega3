@@ -73,6 +73,7 @@ export default class EventosList extends React.Component {
             })
         }
     }
+    
 
     render() {
         return (
