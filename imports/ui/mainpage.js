@@ -9,11 +9,13 @@ export default class mainpage extends Component {
         userlogged: (this.props.location.state !== undefined) ? this.props.location.state.user : -1,
         createdEvent:undefined,
         joinedEvent:undefined,
+        disJoinedEvent:undefined,
         filteredEvents: this.props.location.state.filteredEvents !== undefined ? this.props.location.state.filteredEvents : []
     }
 
     create = (evento) => {
         let m = Events.insert(evento);
+        evento._id = m;
         this.setState({
             createdEvent: evento
         });
@@ -28,6 +30,20 @@ export default class mainpage extends Component {
         });
         let user = Users.findOne({ username: this.state.userlogged });
         user.subscribedEvents.push(evento);
+        Users.update({ _id: user._id }, user);
+    }
+
+    disJoin = (evento) => {
+        this.setState({
+            disJoinedEvent: evento
+        });
+        let user = Users.findOne({ username: this.state.userlogged });
+        let indice = -1;
+        user.subscribedEvents.forEach((event,index) => {
+           if(event._id == evento._id)
+               indice = index;
+        });
+        user.subscribedEvents.splice(indice, 1);
         Users.update({ _id: user._id }, user);
     }
     render() {
@@ -51,21 +67,21 @@ export default class mainpage extends Component {
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
                                 <strong>Eventos</strong>
-                                <EventosList identificador={0} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} joinFunction={this.join}/>
+                                <EventosList identificador={0} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} joinFunction={this.join} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
-                            <EventosList identificador={1} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent}/>
+                            <EventosList identificador={1} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
                             </div>
 
 
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
-                                <EventosList identificador={2} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent}/>
+                                <EventosList identificador={2} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
                                 <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
-                                <EventosList identificador={3} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent}/>
+                                <EventosList identificador={3} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
                             </div>
                         </div>
                     </div>

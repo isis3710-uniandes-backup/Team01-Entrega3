@@ -16,9 +16,12 @@ export default class event extends Component {
             descripcion: this.props.event.detail,
             deporte: this.props.event.sport,
             cantidadPersonas: this.props.event.people,
-            joinFunction: this.props.joinFunction
+            joinFunction: this.props.joinFunction,
+            disJoinFunction: this.props.disJoinFunction,
+            _id:  this.props.event._id
         }
         this.join = this.join.bind(this);
+        this.disJoin = this.disJoin.bind(this);
     }
     join() {
         const ev = {
@@ -27,7 +30,8 @@ export default class event extends Component {
             date: this.state.fecha2,
             sport: this.state.deporte,
             detail: this.state.descripcion,
-            people: this.state.cantidadPersonas
+            people: this.state.cantidadPersonas,
+            _id: this.state._id
         };
         this.state.joinFunction(ev);
     }
@@ -38,9 +42,10 @@ export default class event extends Component {
             date: this.state.fecha,
             sport: this.state.deporte,
             detail: this.state.descripcion,
-            people: this.state.cantidadPersonas
+            people: this.state.cantidadPersonas,
+            _id: this.state._id
         };
-        this.state.joinFunction(ev);
+        this.state.disJoinFunction(ev);
     }
     render() {
         return (

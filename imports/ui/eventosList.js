@@ -7,7 +7,8 @@ export default class EventosList extends React.Component {
         super(props);
         this.state = {
             eventos: [],
-            joinFunction: this.props.joinFunction
+            joinFunction: this.props.joinFunction,
+            disJoinFunction: this.props.disJoinFunction
         }
     }
 
@@ -18,7 +19,7 @@ export default class EventosList extends React.Component {
         if (this.props.identificador === 0) {
             ev = Events.find({}).fetch();
             let dif = [];
-            console.log(ev);
+            console.log(ev)
             for (let i = 0; i < ev.length; i++) {
                 let existe = false;
                 for (let j = 0; j < ev2.length; j++) {
@@ -59,7 +60,7 @@ export default class EventosList extends React.Component {
     componentDidUpdate(prevProps) {
 
         if (this.props.createdEvent !== prevProps.createdEvent && this.props.identificador === 2) {
-            console.log(this.props.createdEvent);
+            console.log("En eventosLists: " + this.props.createdEvent);
             let ev = this.state.eventos;
             ev.push(this.props.createdEvent);
             this.setState({
@@ -72,13 +73,27 @@ export default class EventosList extends React.Component {
                 eventos: ev
             })
         }
+        else if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 1) {
+            let ev = this.state.eventos;
+            let index = -1;
+            ev.forEach((event,i)=>{
+               if(event._id == this.props.disJoinedEvent._id)
+                   index = i;
+            });
+            console.log(index)
+            console.log(ev)
+            ev.splice(index, 1);
+            this.setState({
+                eventos: ev
+            })
+        }
     }
     
 
     render() {
         return (
             <div className="row">
-                {this.state.eventos.map((e, i) => <Event key={i} event={e} joinFunction={this.state.joinFunction} id={this.props.identificador} />)}
+                {this.state.eventos.map((e, i) => <Event key={i} event={e} joinFunction={this.state.joinFunction} disJoinFunction={this.state.disJoinFunction} id={this.props.identificador} />)}
             </div>
         )
     };
