@@ -6,7 +6,7 @@ import Login from './login/login';
 import Register from './login/register';
 import NotFound from './notFound';
 import Home from './slogan';
-import Swal from "sweetalert2";
+import './styles/spovent.css';
 
 export default class spovent extends Component {
     constructor(props) {
@@ -48,10 +48,7 @@ export default class spovent extends Component {
         return (
                 <BrowserRouter>
                     <div>
-                        <Navbar logOutFunc={this.logOut} logueado={this.state.logueado}/>
                         <Switch>
-                            <Route exact path="/" component={Home}/>
-                            <Route exact path="/main" component={MainPage}/>
                             <Route exact path="/login">
                                 <Login logueado={this.state.logueado} logFunc={this.loguear}/>
                             </Route>
@@ -59,9 +56,23 @@ export default class spovent extends Component {
                                 <Register logueado={this.state.logueado} logFunc={this.loguear}/>
                             </Route>
                             <Route path="*">
-                                <NotFound />
+                                <Navbar logOutFunc={this.logOut} logueado={this.state.logueado}/>
+                                <Switch>
+                                    <Route exact path="/" component={Home}/>
+                                    <Route exact path="/main" component={MainPage}/>
+                                    <Route exact path="/login">
+                                        <Login logueado={this.state.logueado} logFunc={this.loguear}/>
+                                    </Route>
+                                    <Route exact path="/register">
+                                        <Register logueado={this.state.logueado} logFunc={this.loguear}/>
+                                    </Route>
+                                    <Route path="*">
+                                        <NotFound />
+                                    </Route>
+                                </Switch>
                             </Route>
                         </Switch>
+
                     </div>
                 </BrowserRouter>
         )

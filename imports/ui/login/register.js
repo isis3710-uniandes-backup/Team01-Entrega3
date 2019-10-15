@@ -3,6 +3,7 @@ import './styles/register.css'
 import {Users} from "../../api/mongoSettings";
 import { Redirect } from 'react-router';
 import Swal from "sweetalert2";
+import {Link} from "react-router-dom";
 //import { Users } from '../../api/mongoSettings';
 let check = false;
 let checkUsername = true;
@@ -142,43 +143,50 @@ export default class register extends Component{
             }} />;
         }
         return (
-            <div className="container login-container">
+            <div className="container register-container">
                 <div className="row" id="login">
-                    <div className="col-md-6 offset-md-3 register-form">
-                        <h3>Registrarse</h3>
-
-                        <div className="form-group">
-                            <input id="username" required type="text" className="form-control register-form-control-username" placeholder="Username "
-                                   onChange={this.changeValue} title="Completa este campo."></input>
-                            {checkUsername ? check == true ? <p id="validation">Ya esta en uso este usuario, intenta con otro.</p> : <div/> :
-                            <p id="validation">*Rellena este campo</p>}
-                        </div>
-                            <div className="form-group">
-                                <input id="name" required type="text" className="form-control" placeholder="Nombre "
-                                       onChange={this.changeValue} title="Completa este campo."/>
-                                {checkName ? <div/>:<p id="validation">*Rellena este campo</p>}
-                            </div>
-                            <div className="form-group">
-                                <input id="lastname" required type="text" className="form-control" placeholder="Apellidos "
-                                       onChange={this.changeValue} title="Completa este campo."/>
-                                {checkLastName ? <div/>:<p id="validation">*Rellena este campo</p>}
-                            </div>
-                            <div className="form-group">
-                                <input id="email" required type="text" className="form-control" placeholder="Correo "
-                                       onChange={this.changeValue} title="Completa este campo."/>
-                                {checkEmail ? <div/>:<p id="validation">*Rellena este campo</p>}
-                            </div>
-                            <div className="form-group">
-                                <input id="password" required type="password" className="form-control" placeholder="Contraseña "
-                                       onChange={this.changeValue} title="Completa este campo."/>
-                                {checkPassword ? <div/>:<p id="validation">*Rellena este campo</p>}
-                            </div>
-                            <div className="form-group">
-                                <input type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}/>
-                            </div>
-
+                    <div className="col-md-2 spovent-logo-register">
+                        <Link to="/"><strong id="brandName-login">Spovent</strong></Link>
                     </div>
-                    <div className="logo" />
+                    <div className="col-md-10">
+                        <div className="row">
+                            <div className="col-md-6 offset-md-3 register-form">
+                                <h3>Registrarse</h3>
+
+                                <div className="form-group">
+                                    <input id="username" required type="text" className="form-control register-form-control-username" placeholder="Username "
+                                           onChange={this.changeValue} title="Completa este campo."></input>
+                                    {checkUsername ? check == true ? <p id="validation">Ya esta en uso este usuario, intenta con otro.</p> : <div/> :
+                                    <p id="validation">*Rellena este campo</p>}
+                                </div>
+                                    <div className="form-group">
+                                        <input id="name" required type="text" className="form-control" placeholder="Nombre "
+                                               onChange={this.changeValue} title="Completa este campo."/>
+                                        {checkName ? <div/>:<p id="validation">*Rellena este campo</p>}
+                                    </div>
+                                    <div className="form-group">
+                                        <input id="lastname" required type="text" className="form-control" placeholder="Apellidos "
+                                               onChange={this.changeValue} title="Completa este campo."/>
+                                        {checkLastName ? <div/>:<p id="validation">*Rellena este campo</p>}
+                                    </div>
+                                    <div className="form-group">
+                                        <input id="email" required type="text" className="form-control" placeholder="Correo "
+                                               onChange={this.changeValue} title="Completa este campo."/>
+                                        {checkEmail ? <div/>:<p id="validation">*Rellena este campo</p>}
+                                    </div>
+                                    <div className="form-group">
+                                        <input id="password" required type="password" className="form-control" placeholder="Contraseña "
+                                               onChange={this.changeValue} title="Completa este campo."/>
+                                        {checkPassword ? <div/>:<p id="validation">*Rellena este campo</p>}
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}/>
+                                    </div>
+
+                            </div>
+                            <div className="logo" />
+                        </div>
+                    </div>
                 </div>
             </div>
         )

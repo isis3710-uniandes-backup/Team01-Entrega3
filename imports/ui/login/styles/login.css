@@ -1,6 +1,5 @@
 .login-container{
-    margin-top: 2.5%;
-    margin-bottom: 2%;
+    padding: 8% 0%;
 }
 .login-form{
     padding: 8%;
@@ -67,4 +66,23 @@
     color: #ff0054;
     font-family: 'Open Sans', sans-serif;
     font-size: 75%;
+}
+
+.spovent-logo a{
+    position: absolute;
+    padding: 100% 50%;
+}
+
+#brandName-login{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: #ff0054;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+#brandName-login:hover {
+    text-decoration: none !important;
+    font-size: 2.5rem ;
 }
