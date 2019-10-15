@@ -18,17 +18,10 @@ export default class mainpage extends Component {
         this.setState({
             confirmEvents: confirmados
         });
-<<<<<<< HEAD
-        
         let user=Users.findOne({username: this.state.userlogged});
         user.subscribedEvents.push(evento);
         console.log(user);
         Users.update( { username: user.username },user);
-         
-        
-=======
-
->>>>>>> d5b454de719e79cfa09bb97041725028ce74dae7
     }
     create = (evento) => {
         let todos = this.state.allEvents;
@@ -47,9 +40,6 @@ export default class mainpage extends Component {
         Events.insert(evento);
         
     }
-
-<<<<<<< HEAD
-=======
     componentDidMount() {
         this.getEvents(() => {
             return Users.findOne({ username: this.state.userlogged });
@@ -63,8 +53,6 @@ export default class mainpage extends Component {
             createdEvents: encontrar.eventsOffered
         });
     }
->>>>>>> d5b454de719e79cfa09bb97041725028ce74dae7
-
     render() {
         return (
             <div id="main" className="container-fluid">
