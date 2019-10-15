@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../ui/styles/mainpage.css';
 import CreateEvent from './createEvent';
 import EventosList from './eventosList';
-import {Users, Events} from "../api/mongoSettings";
+import { Users, Events } from "../api/mongoSettings";
 
 export default class mainpage extends Component {
     state = {
@@ -18,6 +18,7 @@ export default class mainpage extends Component {
         this.setState({
             confirmEvents: confirmados
         });
+<<<<<<< HEAD
         
         let user=Users.findOne({username: this.state.userlogged});
         user.subscribedEvents.push(evento);
@@ -25,6 +26,9 @@ export default class mainpage extends Component {
         Users.update( { username: user.username },user);
          
         
+=======
+
+>>>>>>> d5b454de719e79cfa09bb97041725028ce74dae7
     }
     create = (evento) => {
         let todos = this.state.allEvents;
@@ -44,6 +48,22 @@ export default class mainpage extends Component {
         
     }
 
+<<<<<<< HEAD
+=======
+    componentDidMount() {
+        this.getEvents(() => {
+            return Users.findOne({ username: this.state.userlogged });
+        })
+
+    };
+    getEvents(encontrar) {
+        this.setState({
+            allEvents: Events.find({}),
+            confirmEvents: encontrar.suscribedEvents,
+            createdEvents: encontrar.eventsOffered
+        });
+    }
+>>>>>>> d5b454de719e79cfa09bb97041725028ce74dae7
 
     render() {
         return (
@@ -65,19 +85,19 @@ export default class mainpage extends Component {
                     <div className="col-9" >
                         <div className="tab-content contenidoPrincipal" id="v-pills-tabContent">
                             <div className="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                            <strong>Eventos</strong>
-                             <EventosList eventos={this.state.allEvents} joinFunction={this.join} />
+                                <strong>Eventos</strong>
+                                <EventosList eventos={this.state.allEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-willAssist" role="tabpanel" aria-labelledby="v-pills-willAssist-tab">
-                            <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
+                                <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Asistiré
                             <EventosList eventos={this.state.confirmEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
-                               <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
+                                <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
                                 <EventosList eventos={this.state.createdEvents} joinFunction={this.join} />
                             </div>
                             <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
-                            <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
+                                <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
                                 <EventosList eventos={this.state.filteredEvents} joinFunction={this.join} />
                             </div>
                         </div>
