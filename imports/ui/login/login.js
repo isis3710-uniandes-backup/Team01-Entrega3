@@ -92,7 +92,17 @@ export default class login extends Component{
             <div className="container login-container">
                 <div className="row">
                     <div className="col-md-2 spovent-logo">
-                        <Link to="/"><strong id="brandName-login">Spovent</strong></Link>
+                        <Link to="/">
+                            <div className="row">
+                                <div className="col-3">
+                                    <i className="fas fa-home"></i>
+                                </div>
+                                <div className="col-9">
+                                    <strong id="brandName-login">Spovent</strong>
+                                    <p id="return-home">Volver al Home</p>
+                                </div>
+                            </div>
+                        </Link>
                     </div>
                     <div className="col-md-10">
                         <div className="row">

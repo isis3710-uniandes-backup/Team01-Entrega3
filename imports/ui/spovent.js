@@ -60,12 +60,6 @@ export default class spovent extends Component {
                                 <Switch>
                                     <Route exact path="/" component={Home}/>
                                     <Route exact path="/main" component={MainPage}/>
-                                    <Route exact path="/login">
-                                        <Login logueado={this.state.logueado} logFunc={this.loguear}/>
-                                    </Route>
-                                    <Route exact path="/register">
-                                        <Register logueado={this.state.logueado} logFunc={this.loguear}/>
-                                    </Route>
                                     <Route path="*">
                                         <NotFound />
                                     </Route>

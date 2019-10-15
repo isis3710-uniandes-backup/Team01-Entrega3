@@ -73,16 +73,31 @@
     padding: 100% 50%;
 }
 
+.fas{
+    position: relative;
+    font-size: 2.7rem;
+    top: 15%;
+    color: #ff0054;
+}
+
+.fas:hover{
+    color: #6369d1;
+}
+
+#return-home{
+    font-size: 1.2rem;
+    font-family: 'Cairo', serif;
+}
+
 #brandName-login{
     font-family: 'Dosis', sans-serif;
     font-weight: 700;
-    font-size: 1.9rem;
+    font-size: 3.2rem;
     color: #ff0054;
-    transition: all 0.3s;
     text-decoration: none;
 }
 
 #brandName-login:hover {
     text-decoration: none !important;
-    font-size: 2.5rem ;
+    color: #6369d1;
 }
