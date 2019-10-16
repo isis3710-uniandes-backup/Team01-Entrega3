@@ -55,7 +55,8 @@ export default class event extends Component {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Quiero desuscribirme!'
+            confirmButtonText: 'Si, Quiero desuscribirme!',
+            cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.value) {
                 Swal.fire({

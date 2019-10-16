@@ -7,6 +7,7 @@ import Register from './login/register';
 import NotFound from './notFound';
 import Home from './slogan';
 import './styles/spovent.css';
+import Swal from "sweetalert2";
 
 export default class spovent extends Component {
     constructor(props) {
@@ -37,10 +38,14 @@ export default class spovent extends Component {
     }
 
     logOut(){
-        this.setState({
-            logueado: false,
-            usuario: ""
+        Swal.fire({
+            type: 'success',
+            title: 'Cerraste sesión exitosamente',
+            text: 'Te estaremos esperando!',
+            showConfirmButton: false,
+            timer: 3500
         });
+        this.setState({logueado: false, usuario: ""})
     }
 
 
