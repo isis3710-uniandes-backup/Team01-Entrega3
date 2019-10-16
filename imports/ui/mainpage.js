@@ -98,10 +98,6 @@ export default class mainpage extends Component {
                                 <strong>Eventos</strong>  <i className="fa fa-angle-right"></i> Cree
                                 <EventosList identificador={2} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
                             </div>
-                            <div className="tab-pane fade" id="v-pills-cancelados" role="tabpanel" aria-labelledby="v-pills-cancelados-tab">
-                                <strong>Eventos</strong> <i className="fa fa-angle-right"></i> Buscados recientemente
-                                <EventosList identificador={3} username={this.state.userlogged} createdEvent={this.state.createdEvent} joinedEvent={this.state.joinedEvent} disJoinedEvent={this.state.disJoinedEvent} disJoinFunction={this.disJoin}/>
-                            </div>
                         </div>
                     </div>
                 </div>
