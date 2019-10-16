@@ -4,7 +4,6 @@ import {Users} from "../../api/mongoSettings";
 import { Redirect } from 'react-router';
 import Swal from "sweetalert2";
 import {Link} from "react-router-dom";
-//import { Users } from '../../api/mongoSettings';
 let check = false;
 let checkUsername = true;
 let checkName = true;
