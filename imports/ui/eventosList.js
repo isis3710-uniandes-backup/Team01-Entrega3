@@ -109,7 +109,7 @@ export default class EventosList extends React.Component {
             <div>
                 <input className="form-control" type="text" id="myInput" onChange={this.filtering} value={this.state.criteria} placeholder="Busca por el nombre del evento deportivo.." />
                 <div className="row">
-                    {this.state.eventos.map((e, i) => <Event key={i} event={e} joinFunction={this.state.joinFunction} disJoinFunction={this.state.disJoinFunction} id={this.props.identificador} />)}
+                    {this.state.eventos.map((e, i) => <Event key={i} event={e} criteria={this.state.criteria} joinFunction={this.state.joinFunction} disJoinFunction={this.state.disJoinFunction} id={this.props.identificador} />)}
                 </div>
             </div>
         )

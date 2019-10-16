@@ -83,6 +83,24 @@ export default class event extends Component {
             }
         });
     }
+    componentDidUpdate(prevPros)
+    {
+        if(this.props.criteria !== prevPros.criteria)
+        {
+            this.setState({
+                nombre : this.props.event.name,
+                lugar : this.props.event.address,
+                fecha : [this.props.event.date.getMonth() + 1,
+                    this.props.event.date.getDate(),
+                    this.props.event.date.getFullYear()].join('/') + ' ' +
+                        [this.props.event.date.getHours(),
+                        this.props.event.date.getMinutes(),
+                        this.props.event.date.getSeconds()].join(':'),
+                deporte : this.props.event.sport,
+                cantidadPersonas : this.props.event.people
+            })
+        }
+    }
 
     render() {
         return (
