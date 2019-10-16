@@ -58,50 +58,52 @@ export default class EventosList extends React.Component {
             eventosReales : ev
         });
     }
-    componentDidUpdate(prevProps) {
-        if (this.props.createdEvent !== prevProps.createdEvent && this.props.identificador === 2) {
+    componentDidUpdate(prevProps) 
+    {
+
+        if (this.props.createdEvent !== prevProps.createdEvent && this.props.identificador === 2) 
+        {
             let ev = this.state.eventos;
             ev.push(this.props.createdEvent);
             this.setState({
                 eventos: ev
             });
-        } else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 1) {
+        }  
+          if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 1) 
+        {
             let ev = this.state.eventos;
             ev.push(this.props.joinedEvent);
             this.setState({
                 eventos: ev
             })
         }
-        else if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 1) {
+        else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 0) 
+        {
             let ev = this.state.eventos;
-            let index = -1;
-            ev.forEach((event, i) => {
-                if (event._id == this.props.disJoinedEvent._id)
-                    index = i;
-            });
-            ev.splice(index, 1);
+            console.log(this.props.joinedEvent);
+           ev = ev.filter( e => {return e._id !== this.props.joinedEvent._id })
             this.setState({
                 eventos: ev
             })
-        }else if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 0) {
+        }
+
+         if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 1) 
+         {
+            let ev = this.state.eventos;
+            console.log(this.props.disJoinedEvent);
+            ev = ev.filter( e => {return e._id !== this.props.disJoinedEvent._id})
+            this.setState({
+                eventos: ev
+            })
+        }
+       else  if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 0) {
             let ev = this.state.eventos;
             ev.push(this.props.disJoinedEvent);
             this.setState({
                 eventos: ev
             })
         }
-        else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 0) {
-            let ev = this.state.eventos;
-            let index = -1;
-            ev.forEach((event, i) => {
-                if (event._id == this.props.joinedEvent._id)
-                    index = i;
-            });
-            ev.splice(index, 1);
-            this.setState({
-                eventos: ev
-            })
-        }
+
     }
     filtering = e => {
         let criteria = e.target.value;
