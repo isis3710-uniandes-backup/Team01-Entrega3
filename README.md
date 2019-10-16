@@ -2,7 +2,7 @@
 
 * [UML](https://www.lucidchart.com/invitations/accept/7fd14bca-13a3-4f38-b2bf-89cbf8616ea0) - Diagrama UML del Proyecto 📋
 * [SpoventVideo](https://www.youtube.com/watch?v=XeDG39sfihU) - Video Propuesta
-* [SpoventApp]() - Video Funcionalidades
+* [SpoventApp](https://youtu.be/RBuSxHTIJak) - Video Funcionalidades
 * [Página Web](http://spovent.herokuapp.com/) - Link de la página web
 
 ### Descripción
