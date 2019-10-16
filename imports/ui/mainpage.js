@@ -62,8 +62,8 @@ export default class mainpage extends Component {
         user.subscribedEvents.splice(indice, 1);
         Users.update({ _id: user._id }, user);
     }
+  
     render() {
-        console.log(this.state.userlogged);
         return (
             <div id="main" className="container-fluid">
                 <div className="row fullrow">
