@@ -86,7 +86,6 @@ export default class event extends Component {
     }
     componentDidUpdate(prevPros)
     {
-        
         if(this.props.criteria !== prevPros.criteria || this.props.event.name !== prevPros.event.name)
         {
             this.setState({
