@@ -80,7 +80,6 @@ export default class EventosList extends React.Component {
         else if (this.props.joinedEvent !== prevProps.joinedEvent && this.props.identificador === 0) 
         {
             let ev = this.state.eventos;
-            console.log(this.props.joinedEvent);
            ev = ev.filter( e => {return e._id !== this.props.joinedEvent._id })
             this.setState({
                 eventos: ev
@@ -90,7 +89,6 @@ export default class EventosList extends React.Component {
          if (this.props.disJoinedEvent !== prevProps.disJoinedEvent && this.props.identificador === 1) 
          {
             let ev = this.state.eventos;
-            console.log(this.props.disJoinedEvent);
             ev = ev.filter( e => {return e._id !== this.props.disJoinedEvent._id})
             this.setState({
                 eventos: ev

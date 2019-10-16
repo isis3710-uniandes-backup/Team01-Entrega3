@@ -74,17 +74,6 @@ export default class Navbar extends Component {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        {/* <form className="form-inline my-2 my-lg-0">
-                            <input id="search" className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" value={this.state.busqueda} onChange={this.changeValue}></input>
-                        </form>
-                        {console.log("filtered events "+ this.state.filtrados)}
-                        {console.log("busqueda "+ this.state.busqueda)} */}
-                        {/* <Link  onClick={this.filtrar}  to={{
-                                pathname : '/',
-                                state : {
-                                    filteredEvents : this.state.filtrados
-                                }}} id="buscarButton" className="btn btn-navbar" 
-                                type="submit" >Buscar</Link> */}
                         {this.state.logueado ? 
                         <ul className="nav navbar-nav ml-auto">
                             <li className="nav-item dropdown">

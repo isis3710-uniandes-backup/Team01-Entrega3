@@ -7,7 +7,6 @@ export default class slogan extends Component {
         logged: (this.props.location.state !== undefined) ? (this.props.location.state) : -1
     }
     render() {
-        console.log(this.state);
         return (
             <div className="container">
                 <div className="row h-100 fullHeight"  >
