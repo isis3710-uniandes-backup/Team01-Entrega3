@@ -189,7 +189,7 @@ export default class register extends Component{
                                                onChange={this.changeValue} title="Completa este campo."/>
                                         {checkPassword ? <div/>:<p id="validation">*Rellena este campo</p>}
                                     </div>
-                                    <div className="form-group">
+                                    <div className="form-group text-center ">
                                         <input type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}/>
                                     </div>
 

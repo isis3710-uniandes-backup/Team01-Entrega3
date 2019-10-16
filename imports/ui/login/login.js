@@ -132,7 +132,7 @@ export default class login extends Component{
                                         <p id="checkPassword-login">*Rellena este campo</p>
                                     </div>
                                 }
-                                <div className="form-group">
+                                <div className="form-group text-center">
                                     <input type="button" className="btnSubmit" value="Ingresar" onClick={this.validate}/>
                                 </div>
                                 <div className="form-group">
