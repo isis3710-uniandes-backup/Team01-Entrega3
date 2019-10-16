@@ -29,6 +29,9 @@ export default class event extends Component {
     }
     join() 
     {
+        this.setState({
+            cantidadPersonas:parseInt(this.state.cantidadPersonas)-1
+        });
         let ev = {
             name: this.state.nombre,
             address: this.state.lugar,
@@ -60,6 +63,9 @@ export default class event extends Component {
                     title: 'Te has desuscrito exitosamente' ,
                     showConfirmButton: false,
                     timer: 1500
+                });
+                this.setState({
+                    cantidadPersonas:parseInt(this.state.cantidadPersonas)+1
                 });
                 let ev = {
                     name: this.state.nombre,

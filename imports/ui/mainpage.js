@@ -36,6 +36,7 @@ export default class mainpage extends Component {
         this.setState({
             joinedEvent: evento
         });
+        Events.update({ _id: evento._id }, evento);
         let user = Users.findOne({ username: this.state.userlogged });
         user.subscribedEvents.push(evento);
         Users.update({ _id: user._id }, user);
@@ -53,6 +54,7 @@ export default class mainpage extends Component {
         this.setState({
             disJoinedEvent: evento
         });
+        Events.update({ _id: evento._id }, evento);
         let user = Users.findOne({ username: this.state.userlogged });
         let indice = -1;
         user.subscribedEvents.forEach((event,index) => {
