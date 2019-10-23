@@ -7,7 +7,7 @@
 
 ### Descripción
 
-Spovent surgió como respuesta al problema de la organización de eventos deportivos, ya que normalmente se presentan inconvenientes a la hora de conseguir el total de personas requeridas para cierto evento. Principalmente está dirigida a atletas y aficionados que estén interesados en realizar y participar en actividades con gente nueva. Con nosotros podrás ampliar tu entorno social con personas a las que les guste las mismas actividades que tú. Puedes unirte a eventos de otras personas y crear los tuyos.
+FutureGuide ...
 
 
 ### Pre-requisitos 📋
@@ -87,16 +87,16 @@ Ingresar el comando heroku open para abrir la página en el browser.
 
 ## Construido con 🛠️
 
-* [Meteor](https://www.meteor.com/) - El framework web usado.
 * [NPM](https://www.npmjs.com/) - Manejador de dependencias.
 * [HEROKU](https://www.heroku.com) - Herramienta Usada para el despliegue de la app.
 * [NodeJs](https://nodejs.org/es/) - Entorno de ejecución
 * [Mongo Atlas](https://www.mongodb.com/cloud/atlas) - Herramienta usada para centralizar la base de datos en la nube.
 * [Mongodb](https://www.mongodb.com/es) - Sistema Manejador de Bases de Datos NOSQL.
+* [React](https://es.reactjs.org/) - Framework usado para desarrollo de frontend.
 
 ## Autores ✒️
 
 * **Mateo Salcedo** 
-* **Francisco Gonzales Rey** 
-* **Andres Manrique** 
+* **Francisco González Rey** 
+* **Andrés Manrique** 
 * **Diany Quintero**
